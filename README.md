@@ -37,10 +37,10 @@ SPACE FIREFIGHTERS es una experiencia audiovisual multijugador cooperativa ambie
 
 Este proyecto fue desarrollado como parte del simulacro laboral **NoCountry**, por el equipo:
 
-- Domenico Pagano 
+- [Domenico Pagano](https://github.com/DomenicoPH) 
 - Maximiliano Javier Testa  
 - [Leonardo Daniel Vivas](https://github.com/LeonardoEC)  
-- Daniel Jimenez  
+- [Daniel Jimenez](https://github.com/dannizj)
 
 ---
 
