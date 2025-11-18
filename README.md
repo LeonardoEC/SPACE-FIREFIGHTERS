@@ -25,6 +25,7 @@ SPACE FIREFIGHTERS es una experiencia audiovisual multijugador cooperativa ambie
 - [🧠 Board de tareas](https://github.com/users/LeonardoEC/projects/8)
 - [🗺️ Roadmap](https://docs.google.com/document/d/1xaUYRrzdC9bvL-rAALQ7hW5LA-s-8Hy_0a-EEWnHu9I/edit?usp=sharing)
 - [🧩 Diagrama del flujo de juego](https://drive.google.com/file/d/1AVJHXuLeukIoT-tpd_t4wzCqB7AlNRmV/view?usp=sharing)
+- [🎨 Arte](https://drive.google.com/drive/folders/1rlQohL3Jnx8aOp6AKzxIN614yGbYvMSJ?usp=sharing)
 
 ---
 
