@@ -1,6 +1,6 @@
 <h1 align="center">🚀 SPACE FIREFIGHTERS 🔥</h1>
 
-<p align="center>**Simulacro laboral NoCountry — Proyecto de videojuego cooperativo en Unity**<p/>
+**Simulacro laboral NoCountry — Proyecto de videojuego cooperativo en Unity**
 
 SPACE FIREFIGHTERS es una experiencia audiovisual multijugador cooperativa ambientada en estaciones espaciales científicas en crisis. Los jugadores asumen roles como bombero, médico o ingeniero para coordinarse y enfrentar incendios, rescatar científicos y contener el fuego en sectores críticos. El juego busca fomentar la comunicación y el trabajo en equipo a través de mecánicas dinámicas y un estilo cartoon 3D.
 
