@@ -1,4 +1,6 @@
-# 🚀 SPACE FIREFIGHTERS 🔥
+<p align="center">
+  <h1>🚀 SPACE FIREFIGHTERS 🔥</h1>
+</p>
 
 **Simulacro laboral NoCountry — Proyecto de videojuego cooperativo en Unity**
 
@@ -62,7 +64,8 @@ Este proyecto fue desarrollado como parte del simulacro laboral **NoCountry**, p
 
 ## 📌 Estado actual
 
-> Proyecto en fase de prototipo.   
+> Proyecto en fase de prototipo.
+> Se están definiendo roles, mecánicas base y ambientación. 
 > El equipo trabaja con milestones semanales y tableros de tareas para organizar el flujo de trabajo.
 
 
