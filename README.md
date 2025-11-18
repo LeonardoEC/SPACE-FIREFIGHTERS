@@ -1,6 +1,4 @@
-<p align="center">
-  <h1>🚀 SPACE FIREFIGHTERS 🔥</h1>
-</p>
+<h1 align="center">🚀 SPACE FIREFIGHTERS 🔥</h1>
 
 **Simulacro laboral NoCountry — Proyecto de videojuego cooperativo en Unity**
 
