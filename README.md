@@ -20,7 +20,7 @@ SPACE FIREFIGHTERS es una experiencia audiovisual multijugador cooperativa ambie
 
 - [📄 GDD - Game Design Document](link_al_drive_o_archivo)
 - [📁 Carpeta compartida del equipo (Drive)](link_al_drive)
-- [🧠 Board de tareas (GitHub Projects)]([link_al_tablero](https://github.com/users/LeonardoEC/projects/8))
+- [🧠 Board de tareas]([link_al_tablero](https://github.com/users/LeonardoEC/projects/8)
 
 ---
 
