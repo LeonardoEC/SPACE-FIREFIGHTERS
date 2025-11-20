@@ -97,3 +97,14 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+Assets/PhotonUnityNetworking/
+Assets/PhotonRealtime/
+Assets/PhotonUnityNetworking.Demos/
+
+Assets/PhotonVoice/
+Assets/PhotonVoice.API/
+Assets/PhotonVoice.PUN/
+Assets/PhotonVoice.Editor/
+
+Assets/Photon/
