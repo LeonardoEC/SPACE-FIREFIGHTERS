@@ -45,6 +45,9 @@ public class Hose_Controller : MonoBehaviour
                 raycastHit.transform.Translate( new Vector3(0, 0, fire_Controller.fireDirectionx + ray.direction.z) * (fire_Controller.fireSpeed + 7f) * Time.deltaTime);
             }
 
+
+
+
         }
 
     }
