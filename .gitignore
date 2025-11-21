@@ -98,6 +98,8 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
+
+# Phonton
 Assets/PhotonUnityNetworking/
 Assets/PhotonRealtime/
 Assets/PhotonUnityNetworking.Demos/
@@ -108,3 +110,7 @@ Assets/PhotonVoice.PUN/
 Assets/PhotonVoice.Editor/
 
 Assets/Photon/
+
+# ProBuilder (Unity Package Manager)
+/Packages/com.unity.probuilder/
+/Packages/com.unity.probuilder.meta
