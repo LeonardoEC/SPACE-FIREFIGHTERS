@@ -12,8 +12,8 @@ SPACE FIREFIGHTERS es una experiencia audiovisual multijugador cooperativa ambie
 
 - **Motor de desarrollo**: Unity
 - **Versión utilizada**: *2022.3.47f1*
-- - Plugins
-  - -  Photon Pun Two
+ - Plugins
+   -  Photon Pun Two
     -  Photon Voice Two
     -  ProBuilder
     -  Cinemachine
