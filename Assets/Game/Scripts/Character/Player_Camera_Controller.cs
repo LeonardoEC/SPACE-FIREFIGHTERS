@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Este script va en el GameObject Camara que debe ir dentro del cuerpo del personaje
+/// Control de camara en primera persona.
+/// </summary>
+
 public class Player_Camera_Controller : MonoBehaviour
 {
+
     // Sensibilidad del mouse
     [Header("Mouse Settings")]
+    [Tooltip("Ajusta la sencibilidad del raton")]
     public float mouseSensitivity = 250f;
 
     // Referencia al cuerpo del jugador
@@ -15,16 +22,14 @@ public class Player_Camera_Controller : MonoBehaviour
     // Variable para la rotacion en el eje X
     private float xRotation = 0f;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         // Bloquear el cursor en el centro de la pantalla
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void LateUpdate()
     {
         CameraPlayer();
     }

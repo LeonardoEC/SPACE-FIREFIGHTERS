@@ -2,34 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Este script va al cuerpo del personaje
+/// Controla los movimientos del personaje
+/// </summary>
+
 public class Player_Movement : MonoBehaviour
 {
 
-    /* -----------------------Movimiento por Transform------------------------ */
+    /* ------------------------ Variables ----------------------- */
     // Velocidad de movimiento del jugador
     public float playerSpeed = 10f;
 
-
-    Rigidbody playerRigidbody;
-
-    private void Awake()
-    {
-        playerRigidbody = GetComponent<Rigidbody>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    /* ------------------------ Tiempo de ejecusion ----------------------- */
     void Update()
     {
         PlayerWalkin();
         PlayerSprint();
 
     }
+
+    /* ------------------------ Movimiento por Caminar ----------------------- */
     // Metodo para el movimiento del jugador por transform.Translate
     private void PlayerWalkin()
     {
@@ -45,6 +38,8 @@ public class Player_Movement : MonoBehaviour
         transform.Translate(playerDirection * playerSpeed * Time.deltaTime);
     }
 
+    /* ------------------------ Movimiento por Correr ----------------------- */
+
     // Metodo para que el juegador pueda correr al presionar la tecla Shift
     private void PlayerSprint()
     {
@@ -58,7 +53,7 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    /* ------------------------ Movimiento por fisica ----------------------- */
+    /* ------------------------ Movimiento por Saltar ----------------------- */
 
 
 
