@@ -110,3 +110,7 @@ Assets/PhotonVoice.PUN/
 Assets/PhotonVoice.Editor/
 
 Assets/Photon/
+
+# ProBuilder (Unity Package Manager)
+/Packages/com.unity.probuilder/
+/Packages/com.unity.probuilder.meta
