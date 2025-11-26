@@ -7,6 +7,7 @@ public class PlayerTest : MonoBehaviourPun
     public PhotonView _photonView;
     public string namePlayer;
     public RollDropDown rollPlayer;
+    public int _lifePlayer = 50;
     
 
     private void Awake()
@@ -16,6 +17,7 @@ public class PlayerTest : MonoBehaviourPun
         if (!_photonView.IsMine)
         {
             _photonView.RPC("RPC_GetConfigure", RpcTarget.Others);
+            
         }
 
     }
@@ -40,6 +42,8 @@ public class PlayerTest : MonoBehaviourPun
                 gameObject.transform.position = new Vector3(0f, 0, 0);
                 break;
         }
+
+        UICircleLifeManager.Instance.SetOwnerPlayer(this);
 
         ////no se puede enviar objetos, en el installer se seleccioan cual con id
         //object[] data = new object[] { namePlayer, rollPlayer };
@@ -69,6 +73,7 @@ public class PlayerTest : MonoBehaviourPun
                 break;
         }
 
+        UICircleLifeManager.Instance.SetOhterPlayer(this);
     }
 
     [PunRPC]
