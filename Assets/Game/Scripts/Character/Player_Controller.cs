@@ -13,7 +13,7 @@ public class Player_Controller : MonoBehaviour
 
 
     public Player_Tool_Detector Player_Tool_Detector;
-    public string rol;
+    string rol;
 
     private void OnEnable()
     {
@@ -27,7 +27,6 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Usa las herramientas "pronta actualizacion"
-        // Player_Tool_Detector.UseTool();
+        Player_Tool_Detector.UseTool();
     }
 }
