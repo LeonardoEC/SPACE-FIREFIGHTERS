@@ -7,6 +7,11 @@ public class Fire_Wall_Controller : MonoBehaviour
     public Vector3 direction;
     public float speed = 5f;
 
+    private void Update()
+    {
+        FireAvances();
+    }
+
     public void FireAvances()
     {
         transform.Translate(direction * speed * Time.deltaTime);

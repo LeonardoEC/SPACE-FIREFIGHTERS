@@ -93,7 +93,7 @@ public class Player_Tool_Detector : MonoBehaviour
                 // Funciones de Hose
                 hose.ShootBullet();
                 hose.ShootWater();
-                Debug.Log("Hose Activo");
+
             }
             else
             {
