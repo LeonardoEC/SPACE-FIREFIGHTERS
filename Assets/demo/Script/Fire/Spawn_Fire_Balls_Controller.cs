@@ -13,7 +13,7 @@ public class Spawn_Fire_Balls_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("FireInstancie", 1f, Random.Range(1f, 10f));
+        InvokeRepeating("FireInstancie", 1f, Random.Range(1f, 5f));
     }
 
 
