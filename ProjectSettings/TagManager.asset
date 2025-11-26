@@ -9,6 +9,7 @@ TagManager:
   - Tool
   - Water
   - Fire_Balls
+  - Environment
   layers:
   - Default
   - TransparentFX
