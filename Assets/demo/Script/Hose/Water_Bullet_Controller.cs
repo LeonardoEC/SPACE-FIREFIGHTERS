@@ -27,5 +27,9 @@ public class Water_Bullet_Controller : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        if(other.gameObject.CompareTag("Environment"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

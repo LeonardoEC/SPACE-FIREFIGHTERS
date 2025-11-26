@@ -13,13 +13,20 @@ public class Player_Movement : MonoBehaviour
     /* ------------------------ Variables ----------------------- */
     // Velocidad de movimiento del jugador
     public float playerSpeed = 10f;
+    public float playerJumFoces = 15f;
+    Rigidbody playerRigidBody;
+
+    private void Awake()
+    {
+        playerRigidBody = GetComponent<Rigidbody>();
+    }
 
     /* ------------------------ Tiempo de ejecusion ----------------------- */
     void Update()
     {
         PlayerWalkin();
         PlayerSprint();
-
+        PlayerJum();
     }
 
     /* ------------------------ Movimiento por Caminar ----------------------- */
@@ -43,7 +50,7 @@ public class Player_Movement : MonoBehaviour
     // Metodo para que el juegador pueda correr al presionar la tecla Shift
     private void PlayerSprint()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             playerSpeed = 20f;
         }
@@ -55,7 +62,14 @@ public class Player_Movement : MonoBehaviour
 
     /* ------------------------ Movimiento por Saltar ----------------------- */
 
+    private void PlayerJum()
+    {
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRigidBody.AddForce(Vector3.up * playerJumFoces, ForceMode.Impulse); 
+        }
+    }
 
 
 }
