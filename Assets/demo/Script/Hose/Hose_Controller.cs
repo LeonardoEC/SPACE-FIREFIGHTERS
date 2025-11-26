@@ -7,6 +7,17 @@ public class Hose_Controller : MonoBehaviour
     public GameObject bulletPrefab;
     public Water_Controller waterController;
     public Transform shootPoint;
+    public Camera cameraPoint;
+
+    private void Update()
+    {
+        HoseMovement();
+    }
+
+    void HoseMovement()
+    {
+        transform.rotation = cameraPoint.transform.rotation;
+    }
 
     public void ShootBullet()
     {
@@ -14,8 +25,6 @@ public class Hose_Controller : MonoBehaviour
 
             Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
     }
-
-
 
     public void ShootWater()
     {

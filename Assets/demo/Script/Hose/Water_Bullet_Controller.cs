@@ -10,9 +10,10 @@ public class Water_Bullet_Controller : MonoBehaviour
         BulletDirection();
     }
 
+    // Limitador de disparos de waterballs
     void BulletDirection()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * 5f);
+        transform.Translate(Vector3.forward * Time.deltaTime * 50f);
     }
 
     private void OnTriggerEnter(Collider other)
