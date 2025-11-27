@@ -114,3 +114,7 @@ Assets/Photon/
 # ProBuilder (Unity Package Manager)
 /Packages/com.unity.probuilder/
 /Packages/com.unity.probuilder.meta
+
+# NavMesh package
+/Packages/com.unity.ai.navigation/
+/Packages/com.unity.ai.navigation.meta
