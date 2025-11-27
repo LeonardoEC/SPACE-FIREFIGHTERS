@@ -13,7 +13,13 @@ public class Player_Movement : MonoBehaviour
     /* ------------------------ Variables ----------------------- */
     // Velocidad de movimiento del jugador
     public float playerSpeed = 10f;
-    public float playerJumFoces = 15f;
+
+    private bool isJumping = false;
+    private bool isAscending = false;
+    private float jumpHeight = 2f;
+    private float jumpSpeed = 5f;
+    private float startY;
+
     Rigidbody playerRigidBody;
 
     private void Awake()
@@ -64,12 +70,45 @@ public class Player_Movement : MonoBehaviour
 
     private void PlayerJum()
     {
-
-        if(Input.GetKeyDown(KeyCode.Space))
+        // Iniciar salto
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            playerRigidBody.AddForce(Vector3.up * playerJumFoces, ForceMode.Impulse); 
+            isJumping = true;
+            isAscending = true;
+            startY = transform.position.y;
+        }
+
+        if (!isJumping) return;
+
+        if (isAscending)
+        {
+            float newY = transform.position.y + (jumpSpeed * Time.deltaTime);
+
+            if (newY < startY + jumpHeight)
+            {
+                transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, startY + jumpHeight, transform.position.z);
+                isAscending = false;
+            }
+        }
+        else
+        {
+            float newY = transform.position.y - (jumpSpeed * Time.deltaTime);
+            newY = Mathf.Max(newY, startY); // evita pasar el suelo
+
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+
+            if (newY <= startY)
+            {
+                isJumping = false;
+                isAscending = false;
+            }
         }
     }
+
 
 
 }
