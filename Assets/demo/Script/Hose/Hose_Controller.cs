@@ -4,51 +4,39 @@ using UnityEngine;
 
 public class Hose_Controller : MonoBehaviour
 {
-    // Distancia maxima del rayo
-    public float MaxDistance;
+    public GameObject bulletPrefab;
+    public Water_Controller waterController;
+    public Transform shootPoint;
+    public Camera cameraPoint;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        HoseMovement();
     }
 
-    // Update is called once per frame
-    void Update()
+    void HoseMovement()
     {
-        HoseDirectionAction();
+        transform.rotation = cameraPoint.transform.rotation;
     }
 
-    private void HoseDirectionAction()
+    public void ShootBullet()
     {
-        // Crear rayo desde la posicion de la manguera en la direccion que apunta
-        Ray ray = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(transform.position, transform.forward * MaxDistance, Color.blue);
+        if (Input.GetKeyDown(KeyCode.Mouse1))
 
-        // Almacenar informacion del rayo
-        RaycastHit raycastHit;
+            Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+    }
 
-        // Disparar rayo y comprobar si golpea algo
-        if (Physics.Raycast(ray, out raycastHit, MaxDistance))
+    public void ShootWater()
+    {
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            // Muestra la informacion del objeto golpeado
-            Debug.Log("Hose hit: " + raycastHit.collider.name);
-            Debug.DrawRay(transform.position, transform.forward * raycastHit.distance, Color.red);
-
-            // Comprobar si el objeto golpeado es fuego y aplicarle la logica correspondiente
-            // Interaciones con el fuego describir aqui
-            if (raycastHit.collider.CompareTag("Fire"))
-            {
-                // Atemcion, mecanica opsoleta, solo para demo
-
-                Fire_Controller fire_Controller = raycastHit.collider.GetComponent<Fire_Controller>();
-                raycastHit.transform.Translate( new Vector3(0, 0, fire_Controller.fireDirectionx + ray.direction.z) * (fire_Controller.fireSpeed + 7f) * Time.deltaTime);
-            }
-
-
-
-
+            waterController.waterByRaycast(true, shootPoint);
+            Debug.Log("Disparando agua");
         }
-
+        else
+        {
+            waterController.waterByRaycast(false, shootPoint);
+            Debug.Log("No disparo agua");
+        }
     }
 }

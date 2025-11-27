@@ -24,7 +24,7 @@ public class Player_Tool_Detector : MonoBehaviour
     private GameObject toolDetector;
     public string rol;
 
-    Vector3 hosePosition = new Vector3(-0.2629998f, -0.423f, 0.262f);
+    Vector3 hosePosition = new Vector3(-0.369f, 0.363f, 0.45f);
     Vector3 medicalKitPosition = new Vector3(0.353f, -0.565f, 0.267f);
     // Proximamente
     Vector3 toolKitPosition = new Vector3(0, 0, 0);
@@ -81,22 +81,26 @@ public class Player_Tool_Detector : MonoBehaviour
         }
     }
 
-    /* Funcion que usa los elementos instanciados aun falta pulir y mejorar 
+    // Funcion que usa los elementos instanciados aun falta pulir y mejorar //
     public void UseTool()
     {
-        if (rol == "shooter")
+        if (rol == "Firefighter")
         {
             // Debug.Log("Shooting action performed");
             Hose_Controller hose = toolDetector.GetComponent<Hose_Controller>();
             if (hose != null)
             {
                 // Funciones de Hose
+                hose.ShootBullet();
+                hose.ShootWater();
+
             }
             else
             {
                 Debug.LogError("No Hose_Controller component found on the tool");
             }
         }
+    /*
         else if (rol == "healer")
         {
             // Debug.Log("Healing action performed");
@@ -110,10 +114,11 @@ public class Player_Tool_Detector : MonoBehaviour
                 Debug.LogError("No MedicalKit_Controller component found on the tool");
             }
         }
+    */
         else
         {
             Debug.LogError("No role assigned, cannot use tool");
         }
     }
-    */
+    
 }

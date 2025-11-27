@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WallFire
+  - Bullet
+  - Tool
+  - Water
+  - Fire_Balls
+  - Environment
   layers:
   - Default
   - TransparentFX
