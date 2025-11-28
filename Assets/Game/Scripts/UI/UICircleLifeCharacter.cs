@@ -6,7 +6,7 @@ using TMPro;
 
 public class UICircleLifeCharacter : MonoBehaviour
 {
-    public PlayerTest _playerRef;
+    public PlayerInfo _playerRef;
 
     [SerializeField] private Image _characterImg;
     [SerializeField] private Image _characterLifeCircle;

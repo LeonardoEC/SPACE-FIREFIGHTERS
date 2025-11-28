@@ -6,7 +6,11 @@ public class PlayerInstaller : MonoBehaviour
 {
     public static PlayerInstaller Instance;
 
+    //[SerializeField] private GameObject _playerControllerPrefab;
     [SerializeField] private List<PlayerConfig> _prefabsPlayerList;
+
+    [Space(10)]
+    [SerializeField] private List<Transform> _instantateTransformList;
 
     private void Awake()
     {
@@ -17,12 +21,15 @@ public class PlayerInstaller : MonoBehaviour
     }
 
 
-    public void InstallPlayer(PlayerTest _player)
+    public void InstallPlayer(PlayerInfo _player)
     {
         _player.Configure(
             NetworkingManager.Instance.playerName,
             _player.rollPlayer
             );
+        //Instantiate(_playerControllerPrefab, _player.gameObject.transform);
+
+        //solo el componente del roll
 
     }
 
