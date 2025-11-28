@@ -61,7 +61,7 @@ public class Player_Tool_Detector : MonoBehaviour
                     toolDetector.transform.localPosition = hosePosition;
                     Debug.Log("Firefighter role assigned");
                 }
-                else if(toolDetector.name == "MedicalKit" && toolDetector.tag == "Tool")
+                else if(toolDetector.name == "Medical_kit" && toolDetector.tag == "Tool")
                 {
                     rol = "Doctor";
                     Debug.Log("Doctor role assigned");
@@ -100,21 +100,21 @@ public class Player_Tool_Detector : MonoBehaviour
                 Debug.LogError("No Hose_Controller component found on the tool");
             }
         }
-    /*
-        else if (rol == "healer")
+    
+        else if (rol == "Doctor")
         {
             // Debug.Log("Healing action performed");
-            MedicalKit_Controller medicalKit = toolDetector.GetComponent<MedicalKit_Controller>();
+            Medical_Kit_Controller medicalKit = toolDetector.GetComponent<Medical_Kit_Controller>();
             if (medicalKit != null)
             {
-                // Funciones de MedicalKit
+                medicalKit.medic();
             }
             else
             {
                 Debug.LogError("No MedicalKit_Controller component found on the tool");
             }
         }
-    */
+    
         else
         {
             Debug.LogError("No role assigned, cannot use tool");
