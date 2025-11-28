@@ -7,8 +7,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager Instance;
 
+    public Transform _instantiatePosition;
+
     [SerializeField]
-    private string _nameCharacterPrefab; 
+    private GameObject _baseCharacterNetPrefab;
 
     private void Awake()
     {
@@ -41,12 +43,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.InRoom) return;
 
-        GameObject pl = PhotonNetwork.Instantiate(_nameCharacterPrefab, Vector3.zero, Quaternion.identity);
+
+        GameObject pl = PhotonNetwork.Instantiate(_baseCharacterNetPrefab.name, _instantiatePosition.position, Quaternion.identity);
 
         if (pl.GetComponent<PhotonView>().IsMine)
         {
-            pl.GetComponent<PlayerTest>().rollPlayer = GetRandomEnum<RollDropDown>();
-            PlayerInstaller.Instance.InstallPlayer(pl.GetComponent<PlayerTest>());
+            pl.GetComponent<PlayerInfo>().rollPlayer = GetRandomEnum<RollDropDown>();
+            PlayerInstaller.Instance.InstallPlayer(pl.GetComponent<PlayerInfo>());
         }
 
     }

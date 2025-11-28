@@ -13,7 +13,7 @@ public class UICircleLifeManager : MonoBehaviour
 
     public bool UpdateLifes;
 
-    public List<PlayerTest> _others;
+    public List<PlayerInfo> _others;
 
     private void Awake()
     {
@@ -23,39 +23,30 @@ public class UICircleLifeManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        //UpdateLifes = true;
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (UpdateLifes)
-        {            
-            if (_others.Count > 0) {
-                int indexOthers = 0;
-
-                foreach (UICircleLifeCharacter item in _othersLifecircle)
-                {
-                    item._playerRef = _others[indexOthers];
-                    indexOthers++;
-                }
+        {
+            int indexOthers = 0;
+            foreach (PlayerInfo player in _others)
+            {
+                _othersLifecircle[indexOthers]._playerRef = player;
+                indexOthers++;
             }
-
            
             UpdateLifes = false;
         }
     }
 
-    public void SetOwnerPlayer(PlayerTest obj)
+    public void SetOwnerPlayer(PlayerInfo obj)
     {
         _ownerUILife._playerRef = obj;
     }
-    public void SetOhterPlayer(PlayerTest obj)
+    public void SetOhterPlayer(PlayerInfo obj)
     {
         _others.Add(obj);
-        _othersLifecircle[_others.Count-1]._playerRef = obj;
-        //UpdateLifes = true;
+        UpdateLifes = true;
     }
 }
