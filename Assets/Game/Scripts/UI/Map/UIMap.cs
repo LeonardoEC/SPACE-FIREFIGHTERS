@@ -10,6 +10,11 @@ public class UIMap : MonoBehaviour
     [SerializeField] private Color _colorC;
 
     [Space(10)]
+    [SerializeField] private int _Limit1 = 7;
+    [SerializeField] private int _Limit2 = 5;
+    [SerializeField] private int _Limit3 = 2;
+
+    [Space(10)]
     [Range(0,10)]
     public int _line;
 
@@ -29,15 +34,15 @@ public class UIMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_line >= 7)
+        if (_line >= _Limit1)
         {
             _imgA.color = _colorA;
         }
-        if (_line < 7 && _line >= 5)
+        if (_line < _Limit1 && _line >= _Limit2)
         {
             _imgA.color = _colorB;
         }
-        if (_line < 5 && _line >= 2)
+        if (_line < _Limit2 && _line >= _Limit3)
         {
             _imgA.color = _colorC;
         }
