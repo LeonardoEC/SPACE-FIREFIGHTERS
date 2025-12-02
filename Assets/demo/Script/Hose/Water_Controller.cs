@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Water_Controller : MonoBehaviour
 {
-    public float maxDistance = 10f;
+    float maxDistance = 250f;
     private float currentDistances = 0f;
-    /* Variable de ejemplo para cuando tengamos el agua
-    Transform transformEjemplo;
-    */
 
     // metodo simulacion comportamiento del agua(RayCast)
     public void waterByRaycast(bool shoot, Transform shootPoint)
@@ -44,33 +41,44 @@ public class Water_Controller : MonoBehaviour
         }
     }
 
-    // Modificando el transform en z
-    // Cambiar el TransofrmEjemplo por el Transform de este objeto
-    // Recordar colocar el pivot en la cara que se quiera escalar
-    /*
-    public void WaterByBody(bool shoot, Transform shootPoint)
+    public void WaterByBody(bool shoot)
     {
-        transformEjemplo.position = shootPoint.position;
-        Vector 3 waterScale = transformEjemplo.localScale;
+
+        Vector3 waterScale = transform.localScale;
+
+        waterScale.x = 50f;
+        waterScale.y = 50f;
 
         if (shoot)
         {
-            waterScale.z += Time.deltaTime * 5f;
+            waterScale.z += Time.deltaTime * 250f;
 
-            if (waterScale.z > maxDistance)
+
+            if (waterScale.z >= maxDistance)
             {
                 waterScale.z = maxDistance;
             }
+
+
         }
         else if (shoot == false)
         {
-            waterScale.z -= Time.deltaTime * 5f;
-            if(waterScale.z < 0f)
+            waterScale.z -= Time.deltaTime * 500f;
+            
+            if (waterScale.z < 0f)
             {
                 waterScale.z = 0f;
             }
+            
         }
-        transformEjemplo.localScale = waterScale;
+
+        transform.localScale = waterScale;
+        // Debug.Log(transform.localScale.z);
+
+
     }
-    */
+
+
+
 }
+

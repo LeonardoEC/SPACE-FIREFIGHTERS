@@ -24,7 +24,7 @@ public class Player_Tool_Detector : MonoBehaviour
     private GameObject toolDetector;
     public string rol;
 
-    Vector3 hosePosition = new Vector3(-0.369f, 0.363f, 0.45f);
+    Vector3 hosePosition = new Vector3(-0.278f, -0.14f, 0.499f);
     Vector3 medicalKitPosition = new Vector3(0.353f, -0.565f, 0.267f);
     // Proximamente
     Vector3 toolKitPosition = new Vector3(0, 0, 0);
