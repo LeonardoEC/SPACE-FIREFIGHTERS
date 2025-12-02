@@ -1,7 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
 
-
 public class PlayerInfo : MonoBehaviourPun
 {
     public PhotonView _photonView;
