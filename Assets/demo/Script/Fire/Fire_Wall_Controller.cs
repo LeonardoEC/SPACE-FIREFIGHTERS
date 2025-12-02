@@ -4,24 +4,73 @@ using UnityEngine;
 
 public class Fire_Wall_Controller : MonoBehaviour
 {
-    public Vector3 direction;
-    public float speed = 5f;
+    public Rigidbody fire_RigidBody;
+    public float fire_Advances_Force = 25f;
+    public float fire_Retroced_Force = 1f;
 
-    private void Update()
+    // Limite de retroceso del fuego
+    public Transform limitTransform;
+    Vector3 startPoint;
+
+    float totalDistance;
+    int currentSegment = 0;
+    public bool isPaused = false;
+
+    private void Awake()
     {
+        fire_RigidBody = GetComponent<Rigidbody>();
+        startPoint = transform.position;
+        totalDistance = Vector3.Distance(transform.position, limitTransform.position);
+    }
+
+    private void FixedUpdate()
+    {
+        FireMovement();
+    }
+
+    void FireMovement()
+    {
+        if (isPaused) return;
+        float traveled = Vector3.Distance(startPoint, transform.position);
+        float progress = (traveled / totalDistance);
+        int segmentReached = Mathf.FloorToInt(progress * 10f);
+
+
+
+        if (segmentReached > currentSegment)
+        {
+            Debug.Log("Llegue al objetivo y estoy en pausa");
+            currentSegment = segmentReached;
+            StartCoroutine(PauseFire());
+            return;
+        }
+
         FireAvances();
     }
 
-    public void FireAvances()
+    private void FireAvances()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+
+
+        float noise = Mathf.PerlinNoise(Time.time, 0f); // valor entre 0 y 1
+        float variableForce = Mathf.Lerp(fire_Advances_Force * 0.5f, fire_Advances_Force * 1.2f, noise);
+        fire_RigidBody.AddForce(transform.forward * variableForce, ForceMode.Impulse);
+
     }
 
-    public void FireRetroced()
+
+    IEnumerator PauseFire()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        isPaused = true;
+        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        isPaused = false;
     }
 
+
+
+
+
+    /*
     private void OnCollisionStay(Collision collision)
     {
         if (collision != null)
@@ -36,4 +85,5 @@ public class Fire_Wall_Controller : MonoBehaviour
         }
 
     }
+    */
 }

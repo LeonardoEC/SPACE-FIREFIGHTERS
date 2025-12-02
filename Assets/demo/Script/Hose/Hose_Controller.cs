@@ -9,30 +9,26 @@ public class Hose_Controller : MonoBehaviour
     public Transform shootPoint;
     public Camera cameraPoint;
 
-    /*
-    public Transform waterPoint;
-    private GameObject currentWater;
-    private Water_Controller currentWaterController;
-    */
+    int poolSize = 10;
+    List<GameObject> bulletPool;
 
+    private void Awake()
+    {
+        BulletPoolStart();
+    }
 
     private void Update()
     {
         HoseMovement();
     }
 
+    // Terminado
     void HoseMovement()
     {
         transform.rotation = cameraPoint.transform.rotation;
     }
 
-    public void ShootBullet()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-
-            Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-    }
-
+    // Terminado
     public void ShootWater()
     {
 
@@ -48,6 +44,62 @@ public class Hose_Controller : MonoBehaviour
 
         }
     }
+
+    /* **************************************************************************************************** */ 
+
+    // Terminado
+    void BulletPoolStart()
+    {
+        bulletPool = new List<GameObject>();
+        for(int i = 0; i < poolSize; i++)
+        {
+            GameObject bullet = Instantiate(bulletPrefab);
+            bullet.SetActive(false);
+            bulletPool.Add(bullet);
+        }
+    }
+
+    GameObject GetBullet()
+    {
+        foreach(var bullet in bulletPool)
+        {
+            if(!bullet.activeInHierarchy)
+            {
+                return bullet;
+            }
+        }
+        return null;
+    }
+
+    IEnumerator DisableAfterTime(GameObject bullet, float tiem)
+    {
+        yield return new WaitForSeconds(tiem);
+        if(bullet.activeInHierarchy)
+        {
+            bullet.SetActive(false);
+        }
+    }
+
+    public void ShootBullet()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            GameObject bulletInPool = GetBullet();
+            if(bulletInPool != null)
+            {
+                bulletInPool.transform.position = shootPoint.position;
+                bulletInPool.transform.rotation = shootPoint.rotation;
+                bulletInPool.SetActive(true);
+
+                StartCoroutine(DisableAfterTime(bulletInPool, 3f));
+
+            }
+        }
+
+    }
+
+
+
 
 
 

@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
+    // consumir vida
 
     /* ------------------------ Variables ----------------------- */
     // Velocidad de movimiento del jugador
@@ -19,7 +20,7 @@ public class Player_Movement : MonoBehaviour
     private bool isJumping = false;
     public bool inAir = false;
     public bool isPlayerGrounded = false;
-    float playerJumpForece = 5f;
+    float playerJumpForece = 10f;
 
     /* Obsoleto
     private bool isAscending = false;
