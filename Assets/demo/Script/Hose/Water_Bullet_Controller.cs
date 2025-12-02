@@ -13,23 +13,23 @@ public class Water_Bullet_Controller : MonoBehaviour
     // Limitador de disparos de waterballs
     void BulletDirection()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * 50f);
+        transform.Translate(Vector3.forward * Time.deltaTime * 30f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("WallFire") && other.gameObject.name == "WallFire")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("Fire_Balls") && other.gameObject.name == "Fire_Balls(Clone)")
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         if(other.gameObject.CompareTag("Environment"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

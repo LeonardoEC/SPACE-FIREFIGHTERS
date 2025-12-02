@@ -46,25 +46,36 @@ public class Water_Controller : MonoBehaviour
 
         Vector3 waterScale = transform.localScale;
 
-        waterScale.x = 50f;
-        waterScale.y = 50f;
+
+        waterScale.x = 60f;
+        waterScale.y = 60f;
+
+
+
+        // Modificar el ancho prosedural
 
         if (shoot)
         {
-            waterScale.z += Time.deltaTime * 250f;
-
+            waterScale.z += Time.deltaTime * 350f;
+            //waterScale.y += Time.deltaTime * 350f;
+            //waterScale.x += Time.deltaTime * 350f;
 
             if (waterScale.z >= maxDistance)
             {
                 waterScale.z = maxDistance;
+                //waterScale.y = 700f;
+                //waterScale.x = 700f;
             }
 
+            transform.Rotate(0f, 0f, 500f * Time.deltaTime);
 
         }
         else if (shoot == false)
         {
             waterScale.z -= Time.deltaTime * 500f;
-            
+            //waterScale.y = Time.deltaTime * 500f;
+            //waterScale.x -= Time.deltaTime * 500f;
+
             if (waterScale.z < 0f)
             {
                 waterScale.z = 0f;
@@ -76,6 +87,19 @@ public class Water_Controller : MonoBehaviour
         // Debug.Log(transform.localScale.z);
 
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("WallFire"))
+        {
+            Debug.Log("Water: Estoy empujando el fuego ");
+            Fire_Wall_Controller wallfire = other.GetComponent<Fire_Wall_Controller>();
+            if (wallfire != null)
+            {
+                wallfire.fire_RigidBody.AddForce(transform.forward * Random.Range(-45f, -25f), ForceMode.Impulse);
+            }
+        }
     }
 
 
