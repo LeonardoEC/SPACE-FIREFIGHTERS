@@ -13,12 +13,20 @@ public class Player_Movement : MonoBehaviour
     /* ------------------------ Variables ----------------------- */
     // Velocidad de movimiento del jugador
     public float playerSpeed = 10f;
+    float playerDirectionHorizontal;
+    float playerDirectionVertical;
 
     private bool isJumping = false;
+    public bool inAir = false;
+    public bool isPlayerGrounded = false;
+    float playerJumpForece = 5f;
+
+    /* Obsoleto
     private bool isAscending = false;
     private float jumpHeight = 2f;
     private float jumpSpeed = 5f;
     private float startY;
+    */
 
     Rigidbody playerRigidBody;
 
@@ -30,13 +38,30 @@ public class Player_Movement : MonoBehaviour
     /* ------------------------ Tiempo de ejecusion ----------------------- */
     void Update()
     {
-        PlayerWalkin();
+        HandleInput();
         PlayerSprint();
-        PlayerJum();
     }
+
+    private void FixedUpdate()
+    {
+        PlayerWalkin();
+        PlayerJump();
+    }
+
+    public void HandleInput()
+    {
+        playerDirectionHorizontal = Input.GetAxisRaw("Horizontal");
+        playerDirectionVertical = Input.GetAxisRaw("Vertical");
+        if (Input.GetKeyDown(KeyCode.Space) && inAir == false)
+        {
+            isJumping = true;
+        }
+    }
+
 
     /* ------------------------ Movimiento por Caminar ----------------------- */
     // Metodo para el movimiento del jugador por transform.Translate
+    /* Obsoleto
     private void PlayerWalkin()
     {
         // Movimiento del jugador con las teclas WASD o las flechas del teclado
@@ -49,6 +74,20 @@ public class Player_Movement : MonoBehaviour
         }
         // Mover al jugador
         transform.Translate(playerDirection * playerSpeed * Time.deltaTime);
+    }
+    */
+
+    public void PlayerWalkin()
+    {
+
+        // Dirección relativa al transform del jugador
+        Vector3 moveDirection = (transform.forward * playerDirectionVertical + transform.right * playerDirectionHorizontal).normalized;
+
+        // Aplicar velocidad manteniendo la gravedad
+        Vector3 velocity = moveDirection * playerSpeed;
+        velocity.y = playerRigidBody.velocity.y; // conservar componente vertical
+
+        playerRigidBody.velocity = velocity;
     }
 
     /* ------------------------ Movimiento por Correr ----------------------- */
@@ -68,6 +107,21 @@ public class Player_Movement : MonoBehaviour
 
     /* ------------------------ Movimiento por Saltar ----------------------- */
 
+
+    public void PlayerJump()
+    {
+
+        if (isPlayerGrounded && isJumping)
+        {
+            playerRigidBody.AddForce(Vector3.up * playerJumpForece, ForceMode.Impulse);
+
+            isJumping = false;
+        }
+    }
+
+
+
+    /* obsoleto
     private void PlayerJum()
     {
         // Iniciar salto
@@ -108,7 +162,7 @@ public class Player_Movement : MonoBehaviour
             }
         }
     }
-
+    */
 
 
 }

@@ -5,9 +5,16 @@ using UnityEngine;
 public class Hose_Controller : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public Water_Controller waterController;
+    public Water_Controller water_Controller;
     public Transform shootPoint;
     public Camera cameraPoint;
+
+    /*
+    public Transform waterPoint;
+    private GameObject currentWater;
+    private Water_Controller currentWaterController;
+    */
+
 
     private void Update()
     {
@@ -28,15 +35,20 @@ public class Hose_Controller : MonoBehaviour
 
     public void ShootWater()
     {
+
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            waterController.waterByRaycast(true, shootPoint);
-            Debug.Log("Disparando agua");
+
+            water_Controller.WaterByBody(true);
+
         }
         else
         {
-            waterController.waterByRaycast(false, shootPoint);
-            Debug.Log("No disparo agua");
+            water_Controller.WaterByBody(false);
+
         }
     }
+
+
+
 }
