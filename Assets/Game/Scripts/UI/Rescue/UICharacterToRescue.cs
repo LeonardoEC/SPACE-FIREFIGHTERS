@@ -41,6 +41,7 @@ public class UICharacterToRescue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (_currentIndex != _indexImg)
         {
             _currentImg = _imgList[_indexImg];
@@ -48,10 +49,11 @@ public class UICharacterToRescue : MonoBehaviour
             _currentIndex = _indexImg;
         }
 
-        if (_currentImg.fillAmount != lifeCharacter)
+        if (_currentImg != null && _currentImg.fillAmount != lifeCharacter)
         {
             _currentImg.fillAmount = lifeCharacter;
         }
+
     }
 
     public void SendlifeCharacteToRescue(int index, float life)

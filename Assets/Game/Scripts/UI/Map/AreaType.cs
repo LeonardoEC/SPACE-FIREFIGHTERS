@@ -4,9 +4,23 @@ using UnityEngine;
 
 public enum AreaType
 {
+    AlmacenA,
+    AlmacenB,
+    AlmacenC,
+    BanosA,
+    Banosb,
     CentroDeMando,
-    SalaCentral,
-    Hangar,
-    Dormitorios,
-    Baños
+    EnergyA,
+    Energyb,
+    HomeA,
+    HomeB,
+    LabsA,
+    LabsB,
+    Med,
+    Pasillos,
+    Reactor,
+    Servidores,
+    VerdesA,
+    VerdesB
+
 }
