@@ -20,7 +20,7 @@ public class Player_Movement : MonoBehaviour
     private bool isJumping = false;
     public bool inAir = false;
     public bool isPlayerGrounded = false;
-    float playerJumpForece = 10f;
+    float playerJumpForece = 6f;
 
     /* Obsoleto
     private bool isAscending = false;

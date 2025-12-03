@@ -7,40 +7,43 @@ public class NPC_Controller : MonoBehaviour
 {
     public Transform target;
     private NavMeshAgent agent;
-    public float stopDinstance = 2f;
+    public float stopDistance = 2f;
     public float NPCSalud = 0f;
 
+    public string contraseña;
     public bool order = false;
+    public bool isSafe = false;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = stopDinstance;
+        agent.stoppingDistance = stopDistance;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        SiguiendoOrdene();
         NPCState();
+        FollowPlayer();
+        onSafe();
     }
 
-    void SiguiendoOrdene()
+    void FollowPlayer()
     {
-        FollowPlayer(order);
-    }
+        if (target == null) return;
 
-    void FollowPlayer(bool order)
-    {
-        if (target != null && order && NPCSalud < 100)
+        if (order && NPCSalud < 100)
         {
-
-            Debug.Log("No puedo seguirte estoy herido");
-
+            Debug.Log("No puedo seguirte, estoy herido");
         }
-        else if (NPCSalud >= 100)
+        else if (order && NPCSalud >= 100 && !isSafe)
         {
             agent.SetDestination(target.position);
+            transform.LookAt(target.position);
+        }
+        else if (isSafe)
+        {
+            order = false; // asegura que no siga más
+            target = null;
         }
     }
 
@@ -48,12 +51,26 @@ public class NPC_Controller : MonoBehaviour
     {
         if (NPCSalud < 100f)
         {
-            Debug.Log("Estoy herido");
+            // Enviar aviso por UI que el NPC esta herido
         }
         else
         {
             NPCSalud = 100;
-            Debug.Log("Estoy curado");
         }
     }
+
+    void onSafe()
+    {
+        if (isSafe)
+        {
+
+            Medical_Kit_Controller mk = FindObjectOfType<Medical_Kit_Controller>();
+            if (mk != null)
+            {
+                mk.NotifyNPCSafe();
+            }
+        }
+    }
+
+
 }
