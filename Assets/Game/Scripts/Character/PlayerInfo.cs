@@ -8,6 +8,9 @@ public class PlayerInfo : MonoBehaviourPun
     public RollDropDown rollPlayer;
     public int _lifePlayer = 50;
 
+    [Space(10)]
+    public Player_Tool_Detector _tool_Detector;
+
     private int _beforeLife;
 
     private void Awake()
@@ -39,7 +42,8 @@ public class PlayerInfo : MonoBehaviourPun
     {
         this.namePlayer = namePlayer;
         this.rollPlayer = rollPlayer;
-        //Instantiate(PlayerInstaller.Instance.GetPrefabById(rollPlayer), transform);
+        Instantiate(PlayerInstaller.Instance.GetPrefabById(rollPlayer), _tool_Detector.gameObject.transform);
+        //_tool_Detector.ToolDectertor();
 
         UICircleLifeManager.Instance.SetOwnerPlayer(this);
 
