@@ -4,35 +4,27 @@ using UnityEngine;
 
 public class Medical_Kit_Controller : MonoBehaviour
 {
-    public bool followMe = false;
-    public bool curando = false;
-
-    bool PlayerOrder;
-    float stateNPCSalud;
-    float curacion;
+    private NPC_Controller currentNPC; // referencia clara al NPC
+    public bool playerOrder;
+    private float curacion;
 
     private void OnTriggerStay(Collider other)
     {
-        if (other != null)
+        if (other.CompareTag("NPC"))
         {
-
-            if (other.CompareTag("NPC"))
-            {
-
-                NPC_Controller npcCotroller = other.GetComponent<NPC_Controller>();
-
-                if (npcCotroller != null)
-                {
-                    npcCotroller.order = PlayerOrder;
-
-                    // Salud actual del personaje
-                    stateNPCSalud = npcCotroller.NPCSalud;
-                    // Curando al personaje
-                    npcCotroller.NPCSalud = curacion;
-                }
-            }
+            currentNPC = other.GetComponent<NPC_Controller>();
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("NPC") && currentNPC == other.GetComponent<NPC_Controller>())
+        {
+            currentNPC = null; // salgo del rango, dejo de curar
+        }
+    }
+
+
 
     public void medic()
     {
@@ -42,29 +34,42 @@ public class Medical_Kit_Controller : MonoBehaviour
 
     void Healing()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && stateNPCSalud >= 0 && stateNPCSalud <= 100)
+        if (currentNPC == null) return;
+
+        if (Input.GetKey(KeyCode.Mouse0) && currentNPC.NPCSalud < 100)
         {
             Debug.Log("Player: Te estoy curando");
-            curacion += 20 * Time.deltaTime;
+            curacion = 20 * Time.deltaTime;
+            currentNPC.NPCSalud += curacion; // sumo salud
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0) && stateNPCSalud >= 100)
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             Debug.Log("Player: He dejado de curar");
         }
-        else if (Input.GetKey(KeyCode.Mouse0) && stateNPCSalud <= 100)
-        {
-            Debug.Log("Player: Ya estas curado");
-        }
-
     }
 
     void FollowMe()
     {
+        if (currentNPC == null) return;
 
-        if (Input.GetKeyDown(KeyCode.F))
+        // Solo puede dar la orden si está curado
+        if (Input.GetKeyDown(KeyCode.F) && currentNPC.NPCSalud >= 100 && !currentNPC.isSafe)
         {
-            PlayerOrder = !PlayerOrder;
-            Debug.Log("Orden enviada: " + PlayerOrder);
+            playerOrder = !playerOrder; // toggle
+            currentNPC.order = playerOrder;
+
+            if (playerOrder)
+                Debug.Log("Player: Sígueme");
+            else
+                Debug.Log("Player: Quédate");
         }
     }
+
+    public void NotifyNPCSafe()
+    {
+        playerOrder = false;
+        Debug.Log("Player: El NPC ya está seguro, orden cancelada");
+    }
+
+
 }
