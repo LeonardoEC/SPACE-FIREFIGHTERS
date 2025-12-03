@@ -13,6 +13,7 @@ public class Fire_Wall_Controller : MonoBehaviour
     Vector3 startPoint;
 
     // % de avance del fuego
+    // Dani
     public int progressPercent ;
 
 
