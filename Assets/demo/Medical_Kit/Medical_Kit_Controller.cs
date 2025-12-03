@@ -53,7 +53,7 @@ public class Medical_Kit_Controller : MonoBehaviour
         if (currentNPC == null) return;
 
         // Solo puede dar la orden si está curado
-        if (Input.GetKeyDown(KeyCode.F) && currentNPC.NPCSalud >= 100 && !currentNPC.isSafe)
+        if (Input.GetKeyDown(KeyCode.F) && currentNPC.NPCSalud >= 75 && !currentNPC.isSafe)
         {
             playerOrder = !playerOrder; // toggle
             currentNPC.order = playerOrder;
@@ -68,7 +68,8 @@ public class Medical_Kit_Controller : MonoBehaviour
     public void NotifyNPCSafe()
     {
         playerOrder = false;
-        Debug.Log("Player: El NPC ya está seguro, orden cancelada");
+        //Debug.Log("Player: El NPC ya está seguro, orden cancelada");
+        //Debug.Log("Tienes 100p");
     }
 
 

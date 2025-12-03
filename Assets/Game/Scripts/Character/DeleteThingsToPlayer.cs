@@ -6,6 +6,9 @@ using Photon.Pun;
 public class DeleteThingsToPlayer : MonoBehaviour
 {
     public PhotonView _pho;
+    public GameObject _bodyPlayer;
+
+    [Space(10)]
     public List<GameObject> _listObj;
     public CapsuleCollider cap;
     public Rigidbody rg;
@@ -28,6 +31,10 @@ public class DeleteThingsToPlayer : MonoBehaviour
             Destroy(pm);
 
             
+        }
+        else
+        {
+            Destroy(_bodyPlayer);
         }
 
         Destroy(this);
