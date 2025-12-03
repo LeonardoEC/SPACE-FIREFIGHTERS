@@ -12,6 +12,8 @@ public class Spawn_Fire_Balls_Controller : MonoBehaviour
 
     Fire_Wall_Controller wallFireController;
 
+    //AddPoints --> cada vez que se elimina una esfera de fuego se suman puntos
+
     int poolFire = 5;
     List<GameObject> firePool;
 

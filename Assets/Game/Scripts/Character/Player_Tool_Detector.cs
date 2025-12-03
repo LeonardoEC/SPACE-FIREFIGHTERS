@@ -24,11 +24,13 @@ public class Player_Tool_Detector : MonoBehaviour
     private GameObject toolDetector;
     public string rol;
 
+    // Manos del personaje
     Vector3 hosePosition = new Vector3(-0.278f, -0.14f, 0.499f);
     Vector3 medicalKitPosition = new Vector3(-0.328f, 0.157f, 0.982f);
     // Proximamente
     Vector3 toolKitPosition = new Vector3(0, 0, 0);
-    private void Awake()
+
+    private void OnEnable()
     {
         ToolDectertor();
     }
@@ -57,9 +59,13 @@ public class Player_Tool_Detector : MonoBehaviour
             {
                 if(toolDetector.name == "Hose" && toolDetector.tag == "Tool")
                 {
+                    //
                     rol = "Firefighter";
                     toolDetector.transform.localPosition = hosePosition;
                     Debug.Log("Firefighter role assigned");
+
+                    // Agregar funcionalidad
+
                 }
                 else if(toolDetector.name == "Medical_kit" && toolDetector.tag == "Tool")
                 {

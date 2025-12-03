@@ -8,7 +8,8 @@ public class NPC_Controller : MonoBehaviour
     public Transform target;
     private NavMeshAgent agent;
     public float stopDistance = 2f;
-    public float NPCSalud = 0f;
+    // disminuir vida
+    public float NPCSalud = 100f;
 
     public string contraseña;
     public bool order = false;
@@ -52,6 +53,7 @@ public class NPC_Controller : MonoBehaviour
         if (NPCSalud < 100f)
         {
             // Enviar aviso por UI que el NPC esta herido
+            // SendlifeCharacteToRescue()
         }
         else
         {
@@ -68,6 +70,7 @@ public class NPC_Controller : MonoBehaviour
             if (mk != null)
             {
                 mk.NotifyNPCSafe();
+                // UIPoints.AddPoints(100);
             }
         }
     }

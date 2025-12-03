@@ -12,6 +12,10 @@ public class Fire_Wall_Controller : MonoBehaviour
     public Transform limitTransform;
     Vector3 startPoint;
 
+    // % de avance del fuego
+
+    // agregar un trigger que le quite vide al player
+
     float totalDistance;
     int currentSegment = 0;
     public bool isPaused = false;
@@ -35,7 +39,7 @@ public class Fire_Wall_Controller : MonoBehaviour
         float progress = (traveled / totalDistance);
         int segmentReached = Mathf.FloorToInt(progress * 10f);
 
-
+        Debug.Log("Avance: " + segmentReached + "%");
 
         if (segmentReached > currentSegment)
         {
