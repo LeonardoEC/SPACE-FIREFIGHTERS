@@ -13,8 +13,10 @@ public class Fire_Wall_Controller : MonoBehaviour
     Vector3 startPoint;
 
     // % de avance del fuego
+    // Dani
+    public int progressPercent ;
 
-    // agregar un trigger que le quite vide al player
+
 
     float totalDistance;
     int currentSegment = 0;
@@ -30,16 +32,35 @@ public class Fire_Wall_Controller : MonoBehaviour
     private void FixedUpdate()
     {
         FireMovement();
+
+    }
+    private void Update()
+    {
+        FinalMovement();
+        progressPercent = AdvanceProgress();
+
+        Debug.Log("Avance del fuego: " + progressPercent + "%");
+    }
+
+    
+
+    int AdvanceProgress()
+    {
+        float traveled = Vector3.Distance(startPoint, transform.position);
+        float progress = (traveled / totalDistance);
+        int segmentReached = Mathf.FloorToInt(progress * 100f);
+        
+
+        return segmentReached;
     }
 
     void FireMovement()
     {
         if (isPaused) return;
+
         float traveled = Vector3.Distance(startPoint, transform.position);
         float progress = (traveled / totalDistance);
         int segmentReached = Mathf.FloorToInt(progress * 10f);
-
-        Debug.Log("Avance: " + segmentReached + "%");
 
         if (segmentReached > currentSegment)
         {
@@ -48,14 +69,13 @@ public class Fire_Wall_Controller : MonoBehaviour
             StartCoroutine(PauseFire());
             return;
         }
+        
 
         FireAvances();
     }
 
     private void FireAvances()
     {
-
-
         float noise = Mathf.PerlinNoise(Time.time, 0f); // valor entre 0 y 1
         float variableForce = Mathf.Lerp(fire_Advances_Force * 0.5f, fire_Advances_Force * 1.2f, noise);
         fire_RigidBody.AddForce(transform.forward * variableForce, ForceMode.Impulse);
@@ -66,28 +86,18 @@ public class Fire_Wall_Controller : MonoBehaviour
     IEnumerator PauseFire()
     {
         isPaused = true;
-        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        yield return new WaitForSeconds(Random.Range(2f, 3.5f));
         isPaused = false;
     }
 
-
-
-
-
-    /*
-    private void OnCollisionStay(Collision collision)
+    void FinalMovement()
     {
-        if (collision != null)
+        if (Vector3.Distance(transform.position, limitTransform.position) < 0.1f)
         {
-            Debug.Log("No esta pasando nada");
+            fire_Advances_Force = 0f;
+            Debug.Log("El fuego llegó al límite y se detuvo.");
         }
-
-        if (collision.gameObject.CompareTag("Water") && collision.gameObject.name == "Water")
-        {
-            FireRetroced();
-            Debug.Log("Estoy tocando: " + collision.gameObject.name);
-        }
-
     }
-    */
+
+
 }

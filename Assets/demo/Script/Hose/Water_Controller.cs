@@ -97,7 +97,7 @@ public class Water_Controller : MonoBehaviour
             Fire_Wall_Controller wallfire = other.GetComponent<Fire_Wall_Controller>();
             if (wallfire != null)
             {
-                wallfire.fire_RigidBody.AddForce(transform.forward * Random.Range(-45f, -25f), ForceMode.Impulse);
+                wallfire.fire_RigidBody.AddForce(transform.forward * Random.Range(-35f, -37f) , ForceMode.Impulse);
             }
         }
     }
