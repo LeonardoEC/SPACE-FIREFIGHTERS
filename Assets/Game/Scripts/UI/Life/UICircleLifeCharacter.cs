@@ -8,6 +8,7 @@ public class UICircleLifeCharacter : MonoBehaviour
 {
     public PlayerInfo _playerRef;
 
+    [Space(10)]
     [SerializeField] private Image _characterImg;
     [SerializeField] private Image _characterLifeCircle;
     [SerializeField] private TextMeshProUGUI _nameText;
