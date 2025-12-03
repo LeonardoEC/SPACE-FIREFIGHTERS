@@ -2,12 +2,16 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager Instance;
 
     public Transform _instantiatePosition;
+
+    public bool prueba;
+    [SerializeField] private List<RollDropDown> _rollList;
 
     [SerializeField]
     private GameObject _baseCharacterNetPrefab;
@@ -48,8 +52,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         if (pl.GetComponent<PhotonView>().IsMine)
         {
-            pl.GetComponent<PlayerInfo>().rollPlayer = GetRandomEnum<RollDropDown>();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                MakeRollList();
+                //pl.GetComponent<PlayerInfo>().rollPlayer = GetRandomEnum<RollDropDown>();
+            }
+
+            pl.GetComponent<PlayerInfo>().rollPlayer = _rollList[PhotonNetwork.CountOfPlayers - 1];
             PlayerInstaller.Instance.InstallPlayer(pl.GetComponent<PlayerInfo>());
+
         }
 
     }
@@ -60,4 +71,38 @@ public class RoomManager : MonoBehaviourPunCallbacks
         return (T)values.GetValue(Random.Range(0, values.Length));
     }
 
+
+    private void Update()
+    {
+        if (prueba)
+        {
+            MakeRollList();
+            prueba = false;
+        }
+    }
+
+    private void MakeRollList()
+    {
+        _rollList.Clear();
+        AddRandomsRolls();
+        AddRandomsRolls();
+
+    }
+
+    private void AddRandomsRolls()
+    {
+        int randomInt = Random.Range(0, 2);
+
+        if (randomInt == 0)
+        {
+            _rollList.Add(RollDropDown.Bombero);
+            _rollList.Add(RollDropDown.Medico);
+
+        }
+        else if (randomInt == 1)
+        {
+            _rollList.Add(RollDropDown.Medico);
+            _rollList.Add(RollDropDown.Bombero);
+        }
+    }
 }
