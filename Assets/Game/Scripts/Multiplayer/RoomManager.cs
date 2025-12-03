@@ -56,9 +56,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
             {
                 MakeRollList();
                 //pl.GetComponent<PlayerInfo>().rollPlayer = GetRandomEnum<RollDropDown>();
+                
             }
 
-            pl.GetComponent<PlayerInfo>().rollPlayer = _rollList[PhotonNetwork.CountOfPlayers - 1];
+            pl.GetComponent<PlayerInfo>().rollPlayer = _rollList[0];
             PlayerInstaller.Instance.InstallPlayer(pl.GetComponent<PlayerInfo>());
 
         }
