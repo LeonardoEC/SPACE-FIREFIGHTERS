@@ -15,6 +15,7 @@ public class Hose_Controller : MonoBehaviour
     private void Awake()
     {
         BulletPoolStart();
+        cameraPoint = GameObject.Find("Player_Camera").GetComponent<Camera>();
     }
 
     private void Update()
