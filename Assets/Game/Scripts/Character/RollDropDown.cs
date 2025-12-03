@@ -3,8 +3,10 @@ using UnityEngine;
 [System.Serializable]
 public enum RollDropDown
 {
-    bombero,
-    guantes,
-    hose
+    Bombero,
+    Medico,
+    Cientifico,
+    Ingeniero
+    
 }
 

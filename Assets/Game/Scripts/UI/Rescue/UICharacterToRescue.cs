@@ -56,8 +56,8 @@ public class UICharacterToRescue : MonoBehaviour
 
     }
 
-    public void SendlifeCharacteToRescue(int index, float life)
+    public void SendlifeCharacteToRescue(int index, int life)
     {
-        _imgList[index].fillAmount = life;
+        _imgList[index].fillAmount = life/100;
     }
 }
