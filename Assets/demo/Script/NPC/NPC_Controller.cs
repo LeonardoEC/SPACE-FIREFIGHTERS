@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class NPC_Controller : MonoBehaviour
 {
+
+    public delegate void ResetNPC();
+    ResetNPC resetNPC;
+
     public Transform target;
     private NavMeshAgent agent;
     public float stopDistance = 2f;
@@ -18,6 +23,16 @@ public class NPC_Controller : MonoBehaviour
     public bool isSafe = false;
 
     public int indexNPC;
+    private static int npcCounter = 0;
+
+    private void OnEnable()
+    {
+        indexNPC = npcCounter;
+        npcCounter++;
+
+        resetNPC += resetLifeNPC;
+        resetNPC += starNPCPosition;
+    }
 
     private void Awake()
     {
@@ -28,6 +43,7 @@ public class NPC_Controller : MonoBehaviour
     private void Start()
     {
         StartCoroutine(DamageOverTime());
+        starNPCPosition();
     }
 
     void Update()
@@ -52,6 +68,42 @@ public class NPC_Controller : MonoBehaviour
         }
     }
 
+
+    void resetLifeNPC()
+    {
+        NPCSalud = 100;
+    }
+
+    void starNPCPosition()
+    {
+        if (SpawnPointManager.instance == null)
+        {
+            Debug.LogWarning("No hay posiciones definidas en starPosition.");
+            return;
+        }
+
+        switch (indexNPC)
+        {
+            case 0:
+                transform.position = SpawnPointManager.instance.npcSpawnPoints[0].position;
+                break;
+
+            case 1:
+                transform.position = SpawnPointManager.instance.npcSpawnPoints[1].position;
+                break;
+
+            case 2:
+                transform.position = SpawnPointManager.instance.npcSpawnPoints[2].position;
+                break;
+
+        }
+    }
+
+
+    public void ResetPlayerState()
+    {
+        resetNPC?.Invoke();
+    }
 
     void FollowPlayer()
     {
