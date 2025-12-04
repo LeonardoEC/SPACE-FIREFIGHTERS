@@ -43,6 +43,12 @@ public class UIGameOver : MonoBehaviour
         resetAction -= ResetUIData;
     }
 
+    private void OnDestroy()
+    {
+        resetAction -= ResetUIData;
+    }
+
+
     private void Start()
     {
         ShowGameOver(false);
@@ -66,12 +72,12 @@ public class UIGameOver : MonoBehaviour
 
     public void NpcPoints(int value)
     {
-        _npcPoints = value;
+        _npcPoints += value;
         _npcText.text = "" + _npcPoints;
     }
     public void FirePoints(int value)
     {
-        _firePoints = value;
+        _firePoints += value;
         _fireText.text = "" + _firePoints;
     }
     public void FinalPoints(int value)
