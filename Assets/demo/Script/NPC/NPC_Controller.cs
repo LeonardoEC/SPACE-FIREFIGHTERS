@@ -30,8 +30,21 @@ public class NPC_Controller : MonoBehaviour
         indexNPC = npcCounter;
         npcCounter++;
 
-        resetNPC += resetLifeNPC;
-        resetNPC += starNPCPosition;
+
+        UIGameOver.Instance.resetAction += resetLifeNPC;
+        UIGameOver.Instance.resetAction += starNPCPosition;
+    }
+
+    private void OnDisable()
+    {
+        UIGameOver.Instance.resetAction -= resetLifeNPC;
+        UIGameOver.Instance.resetAction -= starNPCPosition;
+    }
+
+    private void OnDestroy()
+    {
+        UIGameOver.Instance.resetAction -= resetLifeNPC;
+        UIGameOver.Instance.resetAction -= starNPCPosition;
     }
 
     private void Awake()
@@ -100,10 +113,7 @@ public class NPC_Controller : MonoBehaviour
     }
 
 
-    public void ResetPlayerState()
-    {
-        resetNPC?.Invoke();
-    }
+
 
     void FollowPlayer()
     {
@@ -140,6 +150,7 @@ public class NPC_Controller : MonoBehaviour
             if (UIPoints.Instance != null)
             {
                 UIPoints.Instance.AddPoints(100);
+                UIGameOver.Instance.NpcPoints(100);
             }
             NPCSalud = 100;
             if (UICharacterToRescue.Instance != null)
