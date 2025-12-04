@@ -10,9 +10,13 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-
+    public delegate void ResetPlayer();
+    ResetPlayer resetPlayer;
 
     private Player_Tool_Detector Player_Tool_Detector;
+
+    // public Transform[] starPosition;
+
     private PlayerInfo playerInfo;
     string rol;
 
@@ -28,15 +32,19 @@ public class Player_Controller : MonoBehaviour
         }
         playerInfo = GetComponent<PlayerInfo>();
 
+
+        // Consumir delegado para reiniciar Player
+        resetPlayer += resetLifePlayer;
+        resetPlayer += starPlayerPosition;
+
+
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         Player_Tool_Detector.UseTool();
         PlayerlifeController();
-
-        Debug.Log("Player Salud: " + player_Life);
     }
 
     void PlayerlifeController()
@@ -46,6 +54,47 @@ public class Player_Controller : MonoBehaviour
             playerInfo._lifePlayer = player_Life;
         }
     }
+
+    void resetLifePlayer()
+    {
+        player_Life = 100;
+    }
+
+
+    void starPlayerPosition()
+    {
+        if (SpawnPointManager.instance == null)
+        {
+            Debug.LogWarning("No hay posiciones definidas en starPosition.");
+            return;
+        }
+
+        switch (playerInfo.rollPlayer)
+        {
+            case RollDropDown.Bombero:
+                transform.position = SpawnPointManager.instance.playerSpawnPoints[0].position;
+                break;
+
+            case RollDropDown.Medico:
+                transform.position = SpawnPointManager.instance.playerSpawnPoints[1].position;
+                break;
+
+            case RollDropDown.Ingeniero:
+                transform.position = SpawnPointManager.instance.playerSpawnPoints[2].position;
+                break;
+
+        }
+    }
+
+
+    public void ResetPlayerState()
+    {
+        resetPlayer?.Invoke();
+    }
+
+
+
+
 
 
     private void OnCollisionStay(Collision collision)
