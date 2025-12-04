@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 /// <summary>
 /// Este script debe de ser colocado en el GameObject que tendra a las armas de hijos
@@ -24,6 +25,7 @@ public class Player_Tool_Detector : MonoBehaviour
     private GameObject toolDetector;
     public string rol;
 
+    public PhotonView _PlayerView;
     // Manos del personaje
     Vector3 hosePosition = new Vector3(-0.278f, -0.14f, 0.499f);
     Vector3 medicalKitPosition = new Vector3(-0.328f, 0.157f, 0.982f);
@@ -33,7 +35,31 @@ public class Player_Tool_Detector : MonoBehaviour
     private void OnEnable()
     {
         ToolDectertor();
+        PositionTool();
     }
+
+
+
+    void PositionTool()
+    {
+        if(!_PlayerView.IsMine)
+        {
+            if (toolDetector.name == "Hose" && toolDetector.tag == "Tool")
+            {
+                toolDetector.transform.localPosition = hosePosition;
+            }
+            else if (toolDetector.name == "Medical_kit" && toolDetector.tag == "Tool")
+            {
+                toolDetector.transform.localPosition = medicalKitPosition;
+            }
+            else if (toolDetector.name == "ToolKit" && toolDetector.tag == "Tool")
+            {
+                // toolDetector.transform.localPosition = toolKitPosition;
+            }
+        }
+    }
+
+
 
     private void ToolDectertor()
     {
@@ -61,7 +87,7 @@ public class Player_Tool_Detector : MonoBehaviour
                 {
                     //
                     rol = "Firefighter";
-                    toolDetector.transform.localPosition = hosePosition;
+                    // toolDetector.transform.localPosition = hosePosition;
                     Debug.Log("Firefighter role assigned");
 
                     // Agregar funcionalidad
@@ -71,13 +97,13 @@ public class Player_Tool_Detector : MonoBehaviour
                 {
                     rol = "Doctor";
                     Debug.Log("Doctor role assigned");
-                    toolDetector.transform.localPosition = medicalKitPosition;
+                    // toolDetector.transform.localPosition = medicalKitPosition;
                 }
                 else if(toolDetector.name == "ToolKit" && toolDetector.tag == "Tool")
                 {
                     rol = "Engineer";
                     Debug.Log("Engineer role assigned");
-                    toolDetector.transform.localPosition = toolKitPosition;
+                    // toolDetector.transform.localPosition = toolKitPosition;
                 }
                 else
                 {
