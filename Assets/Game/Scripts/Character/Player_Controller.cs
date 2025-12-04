@@ -32,8 +32,7 @@ public class Player_Controller : MonoBehaviour
         }
         playerInfo = GetComponent<PlayerInfo>();
 
-
-        // Consumir delegado para reiniciar Player
+        // Delegados
         resetPlayer += resetLifePlayer;
         resetPlayer += starPlayerPosition;
 
