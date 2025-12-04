@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fire_mat_2
-  m_Shader: {fileID: -6465566751694194690, guid: 99cd1b6f6dffaef469df0a61d0c89c65, type: 3}
+  m_Name: Foam_mat_1
+  m_Shader: {fileID: -6465566751694194690, guid: 850deec3cea98be47b9679997fed905a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,23 +24,17 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 1c450b524cacfe04b92e78ee37536822, type: 3}
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _DisolveAmount: -0.67
-    - _DisolveScale: 2
-    - _DistorsionScale: 10
-    - _DistortionAmount: 0.1
     m_Colors:
-    - _Color: {r: 9.269978, g: 1.670258, b: 0, a: 1}
-    - _DisolveSpeed: {r: -0.1, g: -0.5, b: 0, a: 0}
-    - _DistorionSpeed: {r: 0, g: -0.3, b: 0, a: 0}
+    - _Color: {r: 1.7870753, g: 4.5836763, b: 8.06085, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1777770900007418816
+--- !u!114 &1978862801888159588
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

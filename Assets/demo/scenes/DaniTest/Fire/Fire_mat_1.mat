@@ -44,10 +44,10 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _DisolveAmount: 1.2
-    - _DisolveScale: 2
-    - _DistorsionScale: 10
-    - _DistortionAmount: 0.3
+    - _DisolveAmount: -0.92
+    - _DisolveScale: 2.53
+    - _DistorsionScale: 13.53
+    - _DistortionAmount: 0.21
     - _test: 0
     m_Colors:
     - _Color: {r: 9.269978, g: 1.670258, b: 0, a: 1}

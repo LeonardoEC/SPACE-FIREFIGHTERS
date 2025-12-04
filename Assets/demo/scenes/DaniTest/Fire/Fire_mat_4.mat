@@ -44,7 +44,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _DisolveAmount: 1.2
+    - _DisolveAmount: -0.46
     - _DisolveScale: 2
     - _DistorsionScale: 10
     - _DistortionAmount: 0.1
