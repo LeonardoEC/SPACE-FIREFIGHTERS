@@ -25,6 +25,19 @@ public class PlayerInfo : MonoBehaviourPun
 
     }
 
+    private void OnEnable()
+    {
+        UIGameOver.Instance.resetAction += ResetInfoPlayer;
+    }
+    private void OnDisable()
+    {
+        UIGameOver.Instance.resetAction -= ResetInfoPlayer;
+    }
+    private void OnDestroy()
+    {
+        UIGameOver.Instance.resetAction -= ResetInfoPlayer;
+    }
+
     private void Update()
     {
         if (!_photonView.IsMine)
@@ -74,4 +87,9 @@ public class PlayerInfo : MonoBehaviourPun
         _lifePlayer = value;
     }
 
+
+    private void ResetInfoPlayer()
+    {
+        _lifePlayer = 100;
+    }
 }

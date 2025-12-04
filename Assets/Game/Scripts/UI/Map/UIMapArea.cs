@@ -13,12 +13,12 @@ public class UIMapArea : MonoBehaviour
     [SerializeField] private Color _colorD;
 
     [Space(10)]
-    [SerializeField] private int _Limit1 = 7;
-    [SerializeField] private int _Limit2 = 5;
-    [SerializeField] private int _Limit3 = 2;
+    [SerializeField] private int _Limit1 = 70;
+    [SerializeField] private int _Limit2 = 50;
+    [SerializeField] private int _Limit3 = 20;
 
     [Space(10)]
-    [Range(0, 10)]
+    [Range(0, 100)]
     public int _line;
 
     public Image _imgA;
@@ -31,6 +31,11 @@ public class UIMapArea : MonoBehaviour
     public void SetLevel(int value)
     {
         _line += value;
+        SetLevelColor();
+    }
+    public void SetLevelPorcentage(int value)
+    {
+        _line = value;
         SetLevelColor();
     }
 
