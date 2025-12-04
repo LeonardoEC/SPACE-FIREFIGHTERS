@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Hose_Controller : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class Hose_Controller : MonoBehaviour
     public Water_Controller water_Controller;
     public Transform shootPoint;
     public Camera cameraPoint;
+
+    PhotonView _photonView;
+
+
+
 
     int poolSize = 10;
     List<GameObject> bulletPool;
@@ -26,7 +32,11 @@ public class Hose_Controller : MonoBehaviour
     // Terminado
     void HoseMovement()
     {
-        transform.rotation = cameraPoint.transform.rotation;
+        if(_photonView)
+        {
+            transform.rotation = cameraPoint.transform.rotation;
+        }
+        return;
     }
 
     // Terminado
