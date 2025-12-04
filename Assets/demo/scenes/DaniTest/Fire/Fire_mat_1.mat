@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9135498443218069795
+--- !u!114 &-5060412798114553376
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Espuma_sh
-  m_Shader: {fileID: -6465566751694194690, guid: befd3bcad4938d048a76fd6494c929d7, type: 3}
+  m_Name: Fire_mat_1
+  m_Shader: {fileID: -6465566751694194690, guid: 99cd1b6f6dffaef469df0a61d0c89c65, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -35,22 +35,22 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: 1de768a295a8e0443a2e3d8198faad82, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Metallic: 0.1
-    - _NormalsStrengh: 0.01
-    - _Smootness: 1
-    - _TransparencyMask: 0.69
-    - _vAgitation: 14.16
-    - _vPower: 3.85
-    - _vScale: 10
+    - _DisolveAmount: -0.92
+    - _DisolveScale: 2.53
+    - _DistorsionScale: 13.53
+    - _DistortionAmount: 0.21
+    - _test: 0
     m_Colors:
-    - _BaseColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
-    - _NormalSpeed: {r: 0, g: 0.2, b: 0, a: 0}
-    - _vColor: {r: 1, g: 1, b: 1, a: 1}
-    - _vSpeed: {r: 0, g: 0.5, b: 0, a: 0}
-    - _vTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Color: {r: 9.269978, g: 1.670258, b: 0, a: 1}
+    - _DisolveSpeed: {r: -0.1, g: -0.5, b: 0, a: 0}
+    - _DistorionSpeed: {r: 0, g: -0.3, b: 0, a: 0}
   m_BuildTextureStacks: []

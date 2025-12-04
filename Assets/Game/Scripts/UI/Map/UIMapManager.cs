@@ -8,6 +8,10 @@ public class UIMapManager : MonoBehaviour
 
     public List<UIMapArea> _areasList;
 
+    public int _currentLevel;
+    public int _mapLevel;
+
+    private UIMapArea _currentArea;
     private void Awake()
     {
         if (Instance == null || Instance != this)
@@ -16,7 +20,31 @@ public class UIMapManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (_currentLevel > _mapLevel)
+        {
+            if (!_currentArea)
+            {
+                _currentArea = GetArea(AreaType.Reactor);
+            }
+            _currentArea.SetLevelPorcentage(_currentLevel);
+        }
 
+
+    }
+
+    public UIMapArea GetArea(AreaType areaType)
+    {
+        foreach (UIMapArea area in _areasList)
+        {
+            if (area.areaType == areaType)
+            {
+                return area;
+            }
+        }
+        return null;
+    }
     public void AddLevelArea(AreaType areaType)
     {
         foreach (UIMapArea area in _areasList)
