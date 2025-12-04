@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Water_Controller : MonoBehaviour
 {
-    float maxDistance = 250f;
+    float maxDistance = 450f;
     private float currentDistances = 0f;
 
     // metodo simulacion comportamiento del agua(RayCast)
@@ -56,7 +56,7 @@ public class Water_Controller : MonoBehaviour
 
         if (shoot)
         {
-            waterScale.z += Time.deltaTime * 350f;
+            waterScale.z += Time.deltaTime * 800f;
             //waterScale.y += Time.deltaTime * 350f;
             //waterScale.x += Time.deltaTime * 350f;
 
@@ -72,7 +72,7 @@ public class Water_Controller : MonoBehaviour
         }
         else if (shoot == false)
         {
-            waterScale.z -= Time.deltaTime * 500f;
+            waterScale.z -= Time.deltaTime * 5000f;
             //waterScale.y = Time.deltaTime * 500f;
             //waterScale.x -= Time.deltaTime * 500f;
 

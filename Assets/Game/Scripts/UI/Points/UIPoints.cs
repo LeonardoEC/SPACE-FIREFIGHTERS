@@ -6,6 +6,7 @@ using TMPro;
 public class UIPoints : MonoBehaviour
 {
     public static UIPoints Instance;
+ 
 
     [SerializeField] private TextMeshProUGUI _pointsText;
 
@@ -21,15 +22,26 @@ public class UIPoints : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        UIGameOver.Instance.resetAction += ResetPoints;
+    }
+    private void OnDisable()
+    {
+
+        UIGameOver.Instance.resetAction -= ResetPoints;
     }
 
-    // Update is called once per frame
+    private void OnDestroy()
+    {
+        UIGameOver.Instance.resetAction -= ResetPoints;
+    }
+
+
+
     void Update()
     {
+
         if (_counting)
         {
             StartCoroutine(RepeatCoroutine());
@@ -51,6 +63,11 @@ public class UIPoints : MonoBehaviour
             _pointsText.text = "" + _currentPoints;
             yield return new WaitForSeconds(0.02f);
         }
+
+        if (_currentPoints >= 300)
+        {
+            UIGameOver.Instance.ShowGameOver(true);
+        }
     }
 
     public void AddPoints(int value)
@@ -62,5 +79,12 @@ public class UIPoints : MonoBehaviour
     {
         _currentPoints -= value;
         StartCoroutine(RepeatCoroutine());
+    }
+
+    private void ResetPoints()
+    {
+        value = 0;
+        _currentPoints = 0;
+        _pointsText.text = "000000";
     }
 }

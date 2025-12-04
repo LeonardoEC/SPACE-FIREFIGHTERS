@@ -9,6 +9,7 @@ public class UICircleLifeCharacter : MonoBehaviour
     public PlayerInfo _playerRef;
 
     [Space(10)]
+    [SerializeField] private GameObject _panel;
     [SerializeField] private Image _characterImg;
     [SerializeField] private Image _characterLifeCircle;
     [SerializeField] private TextMeshProUGUI _nameText;
@@ -47,15 +48,16 @@ public class UICircleLifeCharacter : MonoBehaviour
     {
         if (_playerRef == null)
         {
-            if (_characterImg.gameObject.activeSelf) {
-                _characterImg.gameObject.SetActive(false);
+            if (_panel.activeSelf) {
+                _panel.SetActive(false);
                 _characterLifeCircle.gameObject.SetActive(false);
             }
             return;
         }
-        else if (!_characterImg.gameObject.activeSelf){
-                _characterImg.gameObject.SetActive(true);
-                _characterLifeCircle.gameObject.SetActive(true);
+        else if (!_panel.activeSelf){
+            _panel.SetActive(true);
+            _characterLifeCircle.gameObject.SetActive(true);
+            
         }
 
 
@@ -63,6 +65,7 @@ public class UICircleLifeCharacter : MonoBehaviour
 
         if (_nameText.text != _playerRef.namePlayer){
             _nameText.text = _playerRef.namePlayer;
+            _characterImg.sprite = IconRollManager.Instance.GetSpriteRoll(_playerRef.rollPlayer);
         }
 
         _barProgres = (float)liveBar / 100f;
