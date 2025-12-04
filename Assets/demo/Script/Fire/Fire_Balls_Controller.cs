@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Fire_Balls_Controller : MonoBehaviour
 {
+
+
     void Update()
     {
         minifireMovement();
@@ -15,6 +17,7 @@ public class Fire_Balls_Controller : MonoBehaviour
         if (UIPoints.Instance != null)
         {
             UIPoints.Instance.AddPoints(100);
+            UIGameOver.Instance.FirePoints(100);
         }
 
         Debug.Log("Ganasta 100pts por destruir bola de fuego");
@@ -24,5 +27,7 @@ public class Fire_Balls_Controller : MonoBehaviour
     {
         transform.Translate(new Vector3(0, 0, 1f) * 4f * Time.deltaTime);
     }
+
+
 
 }
