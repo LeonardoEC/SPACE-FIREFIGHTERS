@@ -12,9 +12,6 @@ public class Hose_Controller : MonoBehaviour
 
     PhotonView _photonView;
 
-
-
-
     int poolSize = 10;
     List<GameObject> bulletPool;
 
@@ -22,6 +19,22 @@ public class Hose_Controller : MonoBehaviour
     {
         BulletPoolStart();
         cameraPoint = GameObject.Find("Player_Camera").GetComponent<Camera>();
+        _photonView = GetComponent<PhotonView>();
+
+
+        if (cameraPoint == null)
+        {
+            GameObject camObj = GameObject.Find("Player_Camera");
+            if (camObj != null)
+            {
+                cameraPoint = camObj.GetComponent<Camera>();
+            }
+            else
+            {
+                Debug.LogWarning("Player_Camera no encontrado. Asegúrate de que esté en escena antes de instanciar el Hose.");
+            }
+        }
+
     }
 
     private void Update()

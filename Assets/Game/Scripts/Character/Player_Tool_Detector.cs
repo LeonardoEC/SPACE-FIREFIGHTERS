@@ -27,10 +27,15 @@ public class Player_Tool_Detector : MonoBehaviour
 
     public PhotonView _PlayerView;
     // Manos del personaje
+
+    /*
     Vector3 hosePosition = new Vector3(-0.278f, -0.14f, 0.499f);
     Vector3 medicalKitPosition = new Vector3(-0.328f, 0.157f, 0.982f);
     // Proximamente
     Vector3 toolKitPosition = new Vector3(0, 0, 0);
+    */
+
+    public Transform[] toolposition;
 
     private void OnEnable()
     {
@@ -39,26 +44,47 @@ public class Player_Tool_Detector : MonoBehaviour
     }
 
 
-
     void PositionTool()
     {
-        if(!_PlayerView.IsMine)
+        if (toolDetector == null)
+        {
+            Debug.LogError("toolDetector es NULL. Revisa que exista un hijo con tag 'Tool'.");
+            return;
+        }
+
+        if (toolposition == null || toolposition.Length == 0)
+        {
+            Debug.LogError("toolposition no está asignado en el Inspector o está vacío.");
+            return;
+        }
+
+        if (!_PlayerView.IsMine)
         {
             if (toolDetector.name == "Hose" && toolDetector.tag == "Tool")
             {
-                toolDetector.transform.localPosition = hosePosition;
+                if (toolposition.Length > 1)
+                    toolDetector.transform.localPosition = toolposition[0].transform.position;
             }
             else if (toolDetector.name == "Medical_kit" && toolDetector.tag == "Tool")
             {
-                toolDetector.transform.localPosition = medicalKitPosition;
+                if (toolposition.Length > 4)
+                    toolDetector.transform.localPosition = toolposition[1].transform.position;
             }
-            else if (toolDetector.name == "ToolKit" && toolDetector.tag == "Tool")
+        }
+        else if (_PlayerView.IsMine)
+        {
+            if (toolDetector.name == "Hose" && toolDetector.tag == "Tool")
             {
-                // toolDetector.transform.localPosition = toolKitPosition;
+                if (toolposition.Length > 0)
+                    toolDetector.transform.localPosition = toolposition[0].transform.position;
+            }
+            else if (toolDetector.name == "Medical_kit" && toolDetector.tag == "Tool")
+            {
+                if (toolposition.Length > 2)
+                    toolDetector.transform.localPosition = toolposition[1].transform.position;
             }
         }
     }
-
 
 
     private void ToolDectertor()
