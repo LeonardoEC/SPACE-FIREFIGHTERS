@@ -9,7 +9,8 @@ public class PlayerInfo : MonoBehaviourPun
     public int _lifePlayer = 50;
 
     [Space(10)]
-    public Player_Tool_Detector _tool_Detector;
+    public Player_Tool_Detector _tool_DetectorOwner;
+    public Player_Tool_Detector _tool_DetectorOther;
 
     private int _beforeLife;
 
@@ -55,7 +56,18 @@ public class PlayerInfo : MonoBehaviourPun
     {
         this.namePlayer = namePlayer;
         this.rollPlayer = rollPlayer;
-        Instantiate(PlayerInstaller.Instance.GetPrefabById(rollPlayer), _tool_Detector.gameObject.transform);
+
+        if (_tool_DetectorOwner != null)
+        {
+            Instantiate(PlayerInstaller.Instance.GetPrefabById(rollPlayer), _tool_DetectorOwner.gameObject.transform);
+            //_tool_DetectorOwner.Configure();
+        }
+        else if (_tool_DetectorOther != null)
+        {
+            Instantiate(PlayerInstaller.Instance.GetPrefabById(rollPlayer), _tool_DetectorOther.gameObject.transform);
+            //_tool_DetectorOther.Configure();
+        }
+
         //_tool_Detector.ToolDectertor();
 
         UICircleLifeManager.Instance.SetOwnerPlayer(this);

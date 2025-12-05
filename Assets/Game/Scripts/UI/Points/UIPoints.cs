@@ -24,7 +24,8 @@ public class UIPoints : MonoBehaviour
 
     private void OnEnable()
     {
-        UIGameOver.Instance.resetAction += ResetPoints;
+        if (UIGameOver.Instance != null)
+            UIGameOver.Instance.resetAction += ResetPoints;
     }
     private void OnDisable()
     {
