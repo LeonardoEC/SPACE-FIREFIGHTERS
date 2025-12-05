@@ -40,7 +40,7 @@ public class Fire_Wall_Controller : MonoBehaviour
         progressPercent = AdvanceProgress();
 
         Debug.Log("Avance del fuego: " + progressPercent + "%");
-        UIMapManager.Instance._currentLevel = progressPercent;
+        // UIMapManager.Instance._currentLevel = progressPercent;
     }
 
     
