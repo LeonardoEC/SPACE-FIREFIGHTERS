@@ -89,32 +89,31 @@ public class Water_Controller : MonoBehaviour
 
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("WallFire"))
+        {
+            Debug.Log("Water: Sosteniendo el fuego");
+            Fire_Wall_Controller wallfire = other.GetComponent<Fire_Wall_Controller>();
+            if (wallfire != null)
+            {
+                wallfire.fire_RigidBody.AddForce(transform.forward * -37f, ForceMode.Impulse);
+            }
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("WallFire"))
         {
-            Debug.Log("Water: Estoy empujando el fuego ");
+            Debug.Log("Water: Sosteniendo el fuego");
             Fire_Wall_Controller wallfire = other.GetComponent<Fire_Wall_Controller>();
             if (wallfire != null)
             {
- 
-                Vector3 pushDirection = -transform.forward; 
-                float pushStrength = -40f; 
-
-                wallfire.fire_RigidBody.AddForce(pushDirection * pushStrength, ForceMode.Force);
-
-
-                if (wallfire.fire_RigidBody.velocity.magnitude > 5f)
-                {
-                    wallfire.fire_RigidBody.velocity = wallfire.fire_RigidBody.velocity.normalized * 5f;
-                }
+                wallfire.fire_RigidBody.AddForce(transform.forward * -30f, ForceMode.Impulse);
             }
         }
     }
-
-
 
 
 }
