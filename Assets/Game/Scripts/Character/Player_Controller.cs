@@ -33,8 +33,8 @@ public class Player_Controller : MonoBehaviour
         playerInfo = GetComponent<PlayerInfo>();
 
 
-        UIGameOver.Instance.resetAction += resetLifePlayer;
-        UIGameOver.Instance.resetAction += starPlayerPosition;
+        // UIGameOver.Instance.resetAction += resetLifePlayer;
+        // UIGameOver.Instance.resetAction += starPlayerPosition;
 
 
     }
@@ -42,15 +42,15 @@ public class Player_Controller : MonoBehaviour
     private void OnDestroy()
     {
 
-        UIGameOver.Instance.resetAction -= resetLifePlayer;
-        UIGameOver.Instance.resetAction -= starPlayerPosition;
+        // UIGameOver.Instance.resetAction -= resetLifePlayer;
+        // UIGameOver.Instance.resetAction -= starPlayerPosition;
     }
 
     private void OnDisable()
     {
 
-        UIGameOver.Instance.resetAction -= resetLifePlayer;
-        UIGameOver.Instance.resetAction -= starPlayerPosition;
+        // UIGameOver.Instance.resetAction -= resetLifePlayer;
+        // UIGameOver.Instance.resetAction -= starPlayerPosition;
     }
 
     void Update()
