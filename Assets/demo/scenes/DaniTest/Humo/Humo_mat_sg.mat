@@ -47,5 +47,5 @@ Material:
     - _FresnelPower: 0.13
     - _Speed: 0.18
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 1.304119, g: 1.304119, b: 1.304119, a: 0.5529412}
   m_BuildTextureStacks: []
