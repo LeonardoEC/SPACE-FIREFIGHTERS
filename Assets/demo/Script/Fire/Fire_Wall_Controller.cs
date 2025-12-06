@@ -6,7 +6,7 @@ public class Fire_Wall_Controller : MonoBehaviour
 {
     public Rigidbody fire_RigidBody;
     public float fire_Advances_Force = 25f;
-    public float fire_Retroced_Force = 1f;
+    public float fire_Retroced_Force = -37f;
 
     // Limite de retroceso del fuego
     public Transform limitTransform;
@@ -15,8 +15,6 @@ public class Fire_Wall_Controller : MonoBehaviour
     // % de avance del fuego
     // Dani
     public int progressPercent ;
-
-
 
     float totalDistance;
     int currentSegment = 0;
@@ -38,8 +36,6 @@ public class Fire_Wall_Controller : MonoBehaviour
     {
         FinalMovement();
         progressPercent = AdvanceProgress();
-
-        //Debug.Log("Avance del fuego: " + progressPercent + "%");
         UIMapManager.Instance._currentLevel = progressPercent;
     }
 
@@ -101,4 +97,28 @@ public class Fire_Wall_Controller : MonoBehaviour
     }
 
 
+    void FireRetroce()
+    {
+        fire_RigidBody.AddForce(transform.forward * fire_Retroced_Force, ForceMode.Force);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            Debug.Log("Murdo de fuego: Estoy tocando agua");
+    
+            isPaused = true;
+            
+            fire_RigidBody.AddForce(-transform.forward * 10f, ForceMode.Force);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            isPaused = false; 
+        }
+    }
 }
