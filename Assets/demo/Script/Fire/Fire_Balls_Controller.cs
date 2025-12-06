@@ -13,14 +13,17 @@ public class Fire_Balls_Controller : MonoBehaviour
 
     private void OnDisable()
     {
-
         if (UIPoints.Instance != null)
         {
             UIPoints.Instance.AddPoints(100);
+        }
+
+        if (UIGameOver.Instance != null)
+        {
             UIGameOver.Instance.FirePoints(100);
         }
 
-        Debug.Log("Ganasta 100pts por destruir bola de fuego");
+        Debug.Log("Ganaste 100pts por destruir bola de fuego");
     }
 
     void minifireMovement()

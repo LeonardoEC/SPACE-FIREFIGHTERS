@@ -23,27 +23,26 @@ public class Player_Tool_Detector : MonoBehaviour
 {
 
     private GameObject toolDetector;
-    public string rol;
+    public RollDropDown rol;
+    public PlayerInfo playerInfo;
 
     public PhotonView _PlayerView;
     // Manos del personaje
-
-    /*
-    Vector3 hosePosition = new Vector3(-0.278f, -0.14f, 0.499f);
-    Vector3 medicalKitPosition = new Vector3(-0.328f, 0.157f, 0.982f);
-    // Proximamente
-    Vector3 toolKitPosition = new Vector3(0, 0, 0);
-    */
 
     public Transform[] toolposition;
 
     private void OnEnable()
     {
-        ToolDectertor();
-        PositionTool();
+        rol = playerInfo.rollPlayer;
+        
     }
 
+    private void Start()
+    {
+        ToolDectertor();
+    }
 
+    /*
     void PositionTool()
     {
         if (toolDetector == null)
@@ -85,10 +84,13 @@ public class Player_Tool_Detector : MonoBehaviour
             }
         }
     }
-
+    */
 
     private void ToolDectertor()
     {
+
+        toolDetector = transform.GetChild(0).gameObject;
+        /*
         // Detecta si hay un hijo
         if (transform.childCount == 0)
         {
@@ -101,7 +103,7 @@ public class Player_Tool_Detector : MonoBehaviour
         }
         else
         {
-            toolDetector = transform.GetChild(0).gameObject;
+            
 
             if (!toolDetector.activeSelf)
             {
@@ -109,7 +111,7 @@ public class Player_Tool_Detector : MonoBehaviour
             }
             else
             {
-                if(toolDetector.name == "Hose" && toolDetector.tag == "Tool")
+                if(toolDetector.name == "Hose(Clone)" && toolDetector.tag == "Tool")
                 {
                     //
                     rol = "Firefighter";
@@ -119,13 +121,13 @@ public class Player_Tool_Detector : MonoBehaviour
                     // Agregar funcionalidad
 
                 }
-                else if(toolDetector.name == "Medical_kit" && toolDetector.tag == "Tool")
+                else if(toolDetector.name == "Medical_kit(Clone)" && toolDetector.tag == "Tool")
                 {
                     rol = "Doctor";
                     Debug.Log("Doctor role assigned");
                     // toolDetector.transform.localPosition = medicalKitPosition;
                 }
-                else if(toolDetector.name == "ToolKit" && toolDetector.tag == "Tool")
+                else if(toolDetector.name == "ToolKit(Clone)" && toolDetector.tag == "Tool")
                 {
                     rol = "Engineer";
                     Debug.Log("Engineer role assigned");
@@ -136,21 +138,26 @@ public class Player_Tool_Detector : MonoBehaviour
                     Debug.LogWarning("No valid tool detected | No se detectó ninguna herramienta válida");
                 }
             }
-        }
+        }*/
     }
+
+    
 
     // Funcion que usa los elementos instanciados aun falta pulir y mejorar //
     public void UseTool()
     {
-        if (rol == "Firefighter")
+        if (rol == RollDropDown.Bombero)
         {
             // Debug.Log("Shooting action performed");
             Hose_Controller hose = toolDetector.GetComponent<Hose_Controller>();
+            Debug.Log(hose);
+
+            //Tomar los inputs 
             if (hose != null)
             {
                 // Funciones de Hose
-                hose.ShootBullet();
-                hose.ShootWater();
+                //hose.ShootBullet();
+                //hose.ShootWater();
 
             }
             else
@@ -159,13 +166,13 @@ public class Player_Tool_Detector : MonoBehaviour
             }
         }
     
-        else if (rol == "Doctor")
+        else if (rol == RollDropDown.Medico)
         {
             // Debug.Log("Healing action performed");
             Medical_Kit_Controller medicalKit = toolDetector.GetComponent<Medical_Kit_Controller>();
             if (medicalKit != null)
             {
-                medicalKit.medic();
+                //medicalKit.medic();
             }
             else
             {

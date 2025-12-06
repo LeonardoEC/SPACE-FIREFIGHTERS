@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Hose_Controller : MonoBehaviour
+public class Hose_Controller : MonoBehaviour, ITool
 {
+
+    // tag_gameObjectPadre Player_Tool_O
     public GameObject bulletPrefab;
     public Water_Controller water_Controller;
     public Transform shootPoint;
@@ -14,6 +16,20 @@ public class Hose_Controller : MonoBehaviour
 
     int poolSize = 10;
     List<GameObject> bulletPool;
+
+    public ToolType ToolName => ToolType.Hose;
+
+
+    public void UsePrimary()
+    {
+        ShootWater();
+    }
+
+    public void UseSecondary()
+    {
+        ShootBullet();
+    }
+
 
     private void Awake()
     {
@@ -45,11 +61,12 @@ public class Hose_Controller : MonoBehaviour
     // Terminado
     void HoseMovement()
     {
-        if(_photonView)
+        Transform parent = transform.parent;
+        if (parent != null && parent.CompareTag("Player_Tool_O"))
         {
             transform.rotation = cameraPoint.transform.rotation;
         }
-        return;
+
     }
 
     // Terminado
@@ -104,22 +121,22 @@ public class Hose_Controller : MonoBehaviour
         }
     }
 
+    // 
     public void ShootBullet()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetKeyDown(KeyCode.Mouse1))
         {
+        // dejo solo esto 
             GameObject bulletInPool = GetBullet();
-            if(bulletInPool != null)
+            if (bulletInPool != null)
             {
                 bulletInPool.transform.position = shootPoint.position;
                 bulletInPool.transform.rotation = shootPoint.rotation;
                 bulletInPool.SetActive(true);
 
                 StartCoroutine(DisableAfterTime(bulletInPool, 3f));
-
             }
         }
-
     }
 
 

@@ -31,20 +31,20 @@ public class NPC_Controller : MonoBehaviour
         npcCounter++;
 
 
-       // UIGameOver.Instance.resetAction += resetLifeNPC;
-       // UIGameOver.Instance.resetAction += starNPCPosition;
+       UIGameOver.Instance.resetAction += resetLifeNPC;
+       UIGameOver.Instance.resetAction += starNPCPosition;
     }
 
     private void OnDisable()
     {
-       // UIGameOver.Instance.resetAction -= resetLifeNPC;
-       // UIGameOver.Instance.resetAction -= starNPCPosition;
+       UIGameOver.Instance.resetAction -= resetLifeNPC;
+       UIGameOver.Instance.resetAction -= starNPCPosition;
     }
 
     private void OnDestroy()
     {
-       // UIGameOver.Instance.resetAction -= resetLifeNPC;
-       // UIGameOver.Instance.resetAction -= starNPCPosition;
+       UIGameOver.Instance.resetAction -= resetLifeNPC;
+       UIGameOver.Instance.resetAction -= starNPCPosition;
     }
 
     private void Awake()
@@ -169,6 +169,11 @@ public class NPC_Controller : MonoBehaviour
         {
             damageRate = 3;
             Debug.Log("Me quemo¡¡¡¡¡¡");
+        }
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            // buscar en el player que tenga el medikit y asigarnarlo como tag
         }
     }
 

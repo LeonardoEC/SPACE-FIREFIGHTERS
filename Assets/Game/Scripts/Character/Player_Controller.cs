@@ -13,7 +13,7 @@ public class Player_Controller : MonoBehaviour
     public delegate void ResetPlayer();
     ResetPlayer resetPlayer;
 
-    private Player_Tool_Detector Player_Tool_Detector;
+    private Tool_Detector Player_Tool_Detector;
 
     // public Transform[] starPosition;
 
@@ -27,8 +27,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (Player_Tool_Detector == null)
         {
-            Player_Tool_Detector = GetComponentInChildren<Player_Tool_Detector>();
-            rol = Player_Tool_Detector.rol;
+            Player_Tool_Detector = GetComponentInChildren<Tool_Detector>();
         }
         playerInfo = GetComponent<PlayerInfo>();
 
