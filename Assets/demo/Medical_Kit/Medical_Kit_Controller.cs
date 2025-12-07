@@ -46,6 +46,11 @@ public class Medical_Kit_Controller : MonoBehaviour, ITool
             Debug.Log("Player: Te estoy curando");
             curacion = 20 * Time.deltaTime;
             currentNPC.NPCSalud += curacion; // sumo salud
+            if (currentNPC.target == null)
+            {
+                currentNPC.target = this.transform;
+            }
+
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
