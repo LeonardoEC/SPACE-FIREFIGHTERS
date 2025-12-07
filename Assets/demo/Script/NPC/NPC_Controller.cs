@@ -171,10 +171,6 @@ public class NPC_Controller : MonoBehaviour
             Debug.Log("Me quemo¡¡¡¡¡¡");
         }
 
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            // buscar en el player que tenga el medikit y asigarnarlo como tag
-        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -186,4 +182,16 @@ public class NPC_Controller : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Safe_Area"))
+        {
+            if (!isSafe)
+            {
+                isSafe = true;
+                Debug.Log($"NPC {indexNPC} ha entrado en zona segura");
+            }
+        }
+    }
 }
