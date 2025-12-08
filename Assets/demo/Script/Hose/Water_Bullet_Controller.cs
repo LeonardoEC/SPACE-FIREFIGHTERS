@@ -26,6 +26,18 @@ public class Water_Bullet_Controller : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
+
+            if (UIPoints.Instance != null)
+            {
+                UIPoints.Instance.AddPoints(100);
+            }
+
+            if (UIGameOver.Instance != null)
+            {
+                UIGameOver.Instance.FirePoints(100);
+            }
+
+            Debug.Log("Ganaste 100pts por destruir bola de fuego");
         }
         if(other.gameObject.CompareTag("Environment"))
         {

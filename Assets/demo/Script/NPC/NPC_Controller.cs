@@ -30,21 +30,32 @@ public class NPC_Controller : MonoBehaviour
         indexNPC = npcCounter;
         npcCounter++;
 
+        if (UIGameOver.Instance != null)
+        {
+            UIGameOver.Instance.resetAction += resetLifeNPC;
+            UIGameOver.Instance.resetAction += starNPCPosition;
+        }
 
-       UIGameOver.Instance.resetAction += resetLifeNPC;
-       UIGameOver.Instance.resetAction += starNPCPosition;
     }
 
     private void OnDisable()
     {
-       UIGameOver.Instance.resetAction -= resetLifeNPC;
-       UIGameOver.Instance.resetAction -= starNPCPosition;
+        if (UIGameOver.Instance != null)
+        {
+            UIGameOver.Instance.resetAction -= resetLifeNPC;
+            UIGameOver.Instance.resetAction -= starNPCPosition;
+        }
+
     }
 
     private void OnDestroy()
     {
-       UIGameOver.Instance.resetAction -= resetLifeNPC;
-       UIGameOver.Instance.resetAction -= starNPCPosition;
+        if (UIGameOver.Instance != null)
+        {
+            UIGameOver.Instance.resetAction -= resetLifeNPC;
+            UIGameOver.Instance.resetAction -= starNPCPosition;
+        }
+
     }
 
     private void Awake()
