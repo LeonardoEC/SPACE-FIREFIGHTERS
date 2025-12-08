@@ -32,8 +32,8 @@ public class Player_Controller : MonoBehaviour
         playerInfo = GetComponent<PlayerInfo>();
 
 
-        // UIGameOver.Instance.resetAction += resetLifePlayer;
-        // UIGameOver.Instance.resetAction += starPlayerPosition;
+        UIGameOver.Instance.resetAction += resetLifePlayer;
+        UIGameOver.Instance.resetAction += starPlayerPosition;
 
 
     }
@@ -41,15 +41,15 @@ public class Player_Controller : MonoBehaviour
     private void OnDestroy()
     {
 
-        // UIGameOver.Instance.resetAction -= resetLifePlayer;
-        // UIGameOver.Instance.resetAction -= starPlayerPosition;
+        UIGameOver.Instance.resetAction -= resetLifePlayer;
+        UIGameOver.Instance.resetAction -= starPlayerPosition;
     }
 
     private void OnDisable()
     {
 
-        // UIGameOver.Instance.resetAction -= resetLifePlayer;
-        // UIGameOver.Instance.resetAction -= starPlayerPosition;
+        UIGameOver.Instance.resetAction -= resetLifePlayer;
+        UIGameOver.Instance.resetAction -= starPlayerPosition;
     }
 
     void Update()
@@ -102,17 +102,19 @@ public class Player_Controller : MonoBehaviour
 
 
 
-
     private void OnCollisionStay(Collision collision)
     {
         if(collision.gameObject.CompareTag("WallFire"))
         {
             player_Life -= 2;
+
+            Debug.Log("Player Salud: "+ player_Life + "muro de fuego");
         }
 
         if (collision.gameObject.CompareTag("Fire_Balls"))
         {
             player_Life -= 1;
+            Debug.Log("Player Salud: " + player_Life + "Bola de fuego");
         }
     }
 
