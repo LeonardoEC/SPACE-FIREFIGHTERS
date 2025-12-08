@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Medical_Kit_Controller : MonoBehaviour
+public class Medical_Kit_Controller : MonoBehaviour, ITool
 {
     private NPC_Controller currentNPC; // referencia clara al NPC
     public bool playerOrder;
     private float curacion;
+
+    public ToolType ToolName => ToolType.MedicalKit;
+
+    public void UsePrimary()
+    {
+        Healing();
+    }
+
+    public void UseSecondary()
+    {
+        FollowMe();
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -25,13 +37,6 @@ public class Medical_Kit_Controller : MonoBehaviour
     }
 
 
-
-    public void medic()
-    {
-        FollowMe();
-        Healing();
-    }
-
     void Healing()
     {
         if (currentNPC == null) return;
@@ -41,6 +46,11 @@ public class Medical_Kit_Controller : MonoBehaviour
             Debug.Log("Player: Te estoy curando");
             curacion = 20 * Time.deltaTime;
             currentNPC.NPCSalud += curacion; // sumo salud
+            if (currentNPC.target == null)
+            {
+                currentNPC.target = this.transform;
+            }
+
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {

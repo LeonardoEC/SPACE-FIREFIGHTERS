@@ -89,6 +89,7 @@ public class Water_Controller : MonoBehaviour
 
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("WallFire"))
@@ -114,7 +115,7 @@ public class Water_Controller : MonoBehaviour
             }
         }
     }
-
+    */
 
 }
 

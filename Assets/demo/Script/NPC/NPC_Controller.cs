@@ -31,20 +31,20 @@ public class NPC_Controller : MonoBehaviour
         npcCounter++;
 
 
-       // UIGameOver.Instance.resetAction += resetLifeNPC;
-       // UIGameOver.Instance.resetAction += starNPCPosition;
+       UIGameOver.Instance.resetAction += resetLifeNPC;
+       UIGameOver.Instance.resetAction += starNPCPosition;
     }
 
     private void OnDisable()
     {
-       // UIGameOver.Instance.resetAction -= resetLifeNPC;
-       // UIGameOver.Instance.resetAction -= starNPCPosition;
+       UIGameOver.Instance.resetAction -= resetLifeNPC;
+       UIGameOver.Instance.resetAction -= starNPCPosition;
     }
 
     private void OnDestroy()
     {
-       // UIGameOver.Instance.resetAction -= resetLifeNPC;
-       // UIGameOver.Instance.resetAction -= starNPCPosition;
+       UIGameOver.Instance.resetAction -= resetLifeNPC;
+       UIGameOver.Instance.resetAction -= starNPCPosition;
     }
 
     private void Awake()
@@ -170,6 +170,7 @@ public class NPC_Controller : MonoBehaviour
             damageRate = 3;
             Debug.Log("Me quemo¡¡¡¡¡¡");
         }
+
     }
 
     private void OnCollisionExit(Collision collision)
@@ -181,4 +182,16 @@ public class NPC_Controller : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Safe_Area"))
+        {
+            if (!isSafe)
+            {
+                isSafe = true;
+                Debug.Log($"NPC {indexNPC} ha entrado en zona segura");
+            }
+        }
+    }
 }

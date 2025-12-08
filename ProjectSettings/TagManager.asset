@@ -11,6 +11,8 @@ TagManager:
   - Fire_Balls
   - Environment
   - NPC
+  - Player_Tool_O
+  - Safe_Area
   layers:
   - Default
   - TransparentFX
