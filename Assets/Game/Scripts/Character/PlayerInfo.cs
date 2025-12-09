@@ -28,15 +28,26 @@ public class PlayerInfo : MonoBehaviourPun
 
     private void OnEnable()
     {
-        UIGameOver.Instance.resetAction += ResetInfoPlayer;
+        if (_photonView.IsMine)
+        {
+            UIGameOver.Instance.resetAction += ResetInfoPlayer;
+        }
+        
     }
     private void OnDisable()
     {
-        UIGameOver.Instance.resetAction -= ResetInfoPlayer;
+        if (_photonView.IsMine)
+        {
+            UIGameOver.Instance.resetAction -= ResetInfoPlayer;
+        }
+        
     }
     private void OnDestroy()
     {
-        UIGameOver.Instance.resetAction -= ResetInfoPlayer;
+        if (_photonView.IsMine)
+        {
+            UIGameOver.Instance.resetAction -= ResetInfoPlayer;
+        }
     }
 
     private void Update()
@@ -49,6 +60,12 @@ public class PlayerInfo : MonoBehaviourPun
             _photonView.RPC("RPC_SetPointsOfLife", RpcTarget.Others, _lifePlayer);
             _beforeLife = _lifePlayer;
         }
+
+        if (namePlayer != NetworkingManager.Instance.playerName)
+        {
+            namePlayer = NetworkingManager.Instance.playerName;
+
+        }
     }
 
 
@@ -60,15 +77,13 @@ public class PlayerInfo : MonoBehaviourPun
         if (_tool_DetectorOwner != null)
         {
             Instantiate(PlayerInstaller.Instance.GetPrefabById(rollPlayer), _tool_DetectorOwner.gameObject.transform);
-            //_tool_DetectorOwner.Configure();
+            
         }
         else if (_tool_DetectorOther != null)
         {
             Instantiate(PlayerInstaller.Instance.GetPrefabById(rollPlayer), _tool_DetectorOther.gameObject.transform);
-            //_tool_DetectorOther.Configure();
+            
         }
-
-        //_tool_Detector.ToolDectertor();
 
         UICircleLifeManager.Instance.SetOwnerPlayer(this);
 

@@ -17,7 +17,7 @@ public class Player_Controller : MonoBehaviour
 
     // public Transform[] starPosition;
 
-    private PlayerInfo playerInfo;
+    [SerializeField] private PlayerInfo playerInfo;
     string rol;
 
     public int player_Life = 100;
@@ -29,27 +29,38 @@ public class Player_Controller : MonoBehaviour
         {
             Player_Tool_Detector = GetComponentInChildren<Tool_Detector>();
         }
-        playerInfo = GetComponent<PlayerInfo>();
+        //playerInfo = GetComponent<PlayerInfo>();
 
 
-        UIGameOver.Instance.resetAction += resetLifePlayer;
-        UIGameOver.Instance.resetAction += starPlayerPosition;
+        if (playerInfo._photonView.IsMine)
+        {
+            UIGameOver.Instance.resetAction += resetLifePlayer;
+            UIGameOver.Instance.resetAction += starPlayerPosition;
+        }
+        
 
 
     }
 
     private void OnDestroy()
     {
-
-        UIGameOver.Instance.resetAction -= resetLifePlayer;
-        UIGameOver.Instance.resetAction -= starPlayerPosition;
+        if (playerInfo._photonView.IsMine)
+        {
+            UIGameOver.Instance.resetAction -= resetLifePlayer;
+            UIGameOver.Instance.resetAction -= starPlayerPosition;
+        }
+        
     }
 
     private void OnDisable()
     {
+        if (playerInfo._photonView.IsMine)
+        {
+            UIGameOver.Instance.resetAction -= resetLifePlayer;
+            UIGameOver.Instance.resetAction -= starPlayerPosition;
+        }
 
-        UIGameOver.Instance.resetAction -= resetLifePlayer;
-        UIGameOver.Instance.resetAction -= starPlayerPosition;
+        
     }
 
     void Update()

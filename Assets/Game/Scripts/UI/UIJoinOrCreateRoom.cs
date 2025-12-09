@@ -35,10 +35,11 @@ public class UIJoinOrCreateRoom : MonoBehaviour
         if (_roomNameInputText.text != "")
         {
             _findMatchButton.interactable = true;
-            if (_networkingManager.roomName != _roomNameInputText.text)
-            {
-                _networkingManager.roomName = _roomNameInputText.text;
+            if (_networkingManager.playerName != _namePlayerinputText.text) {
                 _networkingManager.playerName = _namePlayerinputText.text;
+            }
+            if (_networkingManager.roomName != _roomNameInputText.text) {
+                _networkingManager.roomName = _roomNameInputText.text;
             }
         }
         else

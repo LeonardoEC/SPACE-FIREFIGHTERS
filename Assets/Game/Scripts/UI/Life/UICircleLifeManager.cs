@@ -15,6 +15,8 @@ public class UICircleLifeManager : MonoBehaviour
 
     public List<PlayerInfo> _others;
 
+    private Queue<PlayerInfo> myQueue = new Queue<PlayerInfo>();
+
     private void Awake()
     {
         if (Instance == null || Instance != this)
@@ -46,7 +48,11 @@ public class UICircleLifeManager : MonoBehaviour
     }
     public void SetOhterPlayer(PlayerInfo obj)
     {
-        _others.Add(obj);
-        UpdateLifes = true;
+        if (!myQueue.Contains(obj) && !obj._photonView.IsMine)
+        {
+            myQueue.Enqueue(obj);
+            _others.Add(obj);
+            UpdateLifes = true;
+        }
     }
 }
