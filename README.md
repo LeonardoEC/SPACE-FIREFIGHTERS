@@ -16,7 +16,6 @@ SPACE FIREFIGHTERS es una experiencia audiovisual multijugador cooperativa ambie
      -  Photon Pun Two
      -  Photon Voice Two
      -  ProBuilder
-     -  Cinemachine
 - **Lenguaje principal**: C#
 - **Control de versiones**: Git + GitHub
 - **Gestión de archivos pesados**: Git LFS
