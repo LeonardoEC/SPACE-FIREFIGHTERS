@@ -3,15 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WallFire
+  - Bullet
+  - Tool
+  - Water
+  - Fire_Balls
+  - Environment
+  - NPC
+  - Player_Tool_O
+  - Safe_Area
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - NPC
   - 
   - 
   - 
