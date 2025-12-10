@@ -70,10 +70,10 @@ Nuestro enfoque financiero busca la sostenibilidad del proyecto a largo plazo a 
 -- El juego contará con un valor inicial accesible para adquirir la licencia base. Este pago único garantiza el acceso completo a la experiencia cooperativa fundamental y ayuda a filtrar comportamientos no deseados en la comunidad.
 
 - Economía del Juego (Monedas y Adquisición)
--- Los jugadores podrán adquirir la moneda interna del juego mediante tres vías principales:
+--Los jugadores podrán adquirir la moneda interna del juego mediante tres vías principales:
 -Progreso Natural (Gameplay): Se obtendrá moneda automáticamente al jugar, calculada en base a la cantidad de puntos y desempeño cooperativo en cada misión.
--- Adquisición Directa: Los consumidores podrán optar por comprar paquetes de moneda de manera directa a través de nuestra tienda oficial en el sitio web.
-- Sistema de Recompensas por Tiempo de Espera (Ads): Implementaremos un botón discreto en el Menú Principal que permitirá al jugador ver publicidad voluntaria para ganar monedas extra mientras espera a que sus compañeros se conecten al lobby, aprovechando los tiempos muertos.
+--Adquisición Directa: Los consumidores podrán optar por comprar paquetes de moneda de manera directa a través de nuestra tienda oficial en el sitio web.
+-Sistema de Recompensas por Tiempo de Espera (Ads): Implementaremos un botón discreto en el Menú Principal que permitirá al jugador ver publicidad voluntaria para ganar monedas extra mientras espera a que sus compañeros se conecten al lobby, aprovechando los tiempos muertos.
 
 #Financiación de Contenido (Sostenibilidad)#
 Para asegurar el desarrollo continuo del proyecto, utilizaremos:
