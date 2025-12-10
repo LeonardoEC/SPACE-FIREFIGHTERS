@@ -74,9 +74,9 @@ Nuestro enfoque financiero busca la sostenibilidad del proyecto a largo plazo a 
 - Sistema de Recompensas por Tiempo de Espera (Ads): Implementaremos un botón discreto en el Menú Principal que permitirá al jugador ver publicidad voluntaria para ganar monedas extra mientras espera a que sus compañeros se conecten al lobby, aprovechando los tiempos muertos.
 
 ### Financiación de Contenido (Sostenibilidad)
-Para asegurar el desarrollo continuo del proyecto, utilizaremos:
-Tienda de Cosméticos: Venta de skins (aspectos visuales) exclusivos para los personajes y sus herramientas. Esto permite a los jugadores personalizar su escuadrón sin afectar el balance.
-Sistema de DLCs (Expansiones): Ofreceremos contenido descargable post-lanzamiento que incluirá nuevos mapas jugables y desafíos en entornos exóticos.
+Para asegurar el desarrollo continuo del proyecto, utilizaremos: 
+- Tienda de Cosméticos: Venta de skins (aspectos visuales) exclusivos para los personajes y sus herramientas. Esto permite a los jugadores personalizar su escuadrón sin afectar el balance.
+- Sistema de DLCs (Expansiones): Ofreceremos contenido descargable post-lanzamiento que incluirá nuevos mapas jugables y desafíos en entornos exóticos.
 
 Política Restrictiva: "NO Pay-to-Win"
 Bajo ninguna circunstancia se venderán ventajas mecánicas.
