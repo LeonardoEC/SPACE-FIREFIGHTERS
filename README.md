@@ -64,7 +64,26 @@ Este proyecto fue desarrollado como parte del simulacro laboral **NoCountry**, p
 
 ## 💰 Monetización (en exploración)
 
-- (En debate)
+Nuestro enfoque financiero busca la sostenibilidad del proyecto a largo plazo a través de múltiples canales, manteniendo siempre la integridad de la experiencia cooperativa.
+
+- Modelo de Negocio: "Buy-to-Play" (Pago Único)
+-- El juego contará con un valor inicial accesible para adquirir la licencia base. Este pago único garantiza el acceso completo a la experiencia cooperativa fundamental y ayuda a filtrar comportamientos no deseados en la comunidad.
+
+- Economía del Juego (Monedas y Adquisición)
+-- Los jugadores podrán adquirir la moneda interna del juego mediante tres vías principales:
+-Progreso Natural (Gameplay): Se obtendrá moneda automáticamente al jugar, calculada en base a la cantidad de puntos y desempeño cooperativo en cada misión.
+-- Adquisición Directa: Los consumidores podrán optar por comprar paquetes de moneda de manera directa a través de nuestra tienda oficial en el sitio web.
+- Sistema de Recompensas por Tiempo de Espera (Ads): Implementaremos un botón discreto en el Menú Principal que permitirá al jugador ver publicidad voluntaria para ganar monedas extra mientras espera a que sus compañeros se conecten al lobby, aprovechando los tiempos muertos.
+
+#Financiación de Contenido (Sostenibilidad)#
+Para asegurar el desarrollo continuo del proyecto, utilizaremos:
+Tienda de Cosméticos: Venta de skins (aspectos visuales) exclusivos para los personajes y sus herramientas. Esto permite a los jugadores personalizar su escuadrón sin afectar el balance.
+Sistema de DLCs (Expansiones): Ofreceremos contenido descargable post-lanzamiento que incluirá nuevos mapas jugables y desafíos en entornos exóticos.
+
+Política Restrictiva: "NO Pay-to-Win"
+Bajo ninguna circunstancia se venderán ventajas mecánicas.
+PROHIBIDO VENDER: Mejoras de daño, tanques de agua extendidos, salud extra o cualquier ítem que facilite artificialmente el juego.
+Justificación: El éxito debe depender exclusivamente de las habilidades blandas del equipo (comunicación y cooperación), no de la inversión económica.
 
 ---
 
