@@ -80,8 +80,8 @@ Para asegurar el desarrollo continuo del proyecto, utilizaremos:
 
 Política Restrictiva: "NO Pay-to-Win"
 Bajo ninguna circunstancia se venderán ventajas mecánicas.
-PROHIBIDO VENDER: Mejoras de daño, tanques de agua extendidos, salud extra o cualquier ítem que facilite artificialmente el juego.
-Justificación: El éxito debe depender exclusivamente de las habilidades blandas del equipo (comunicación y cooperación), no de la inversión económica.
+- PROHIBIDO VENDER: Mejoras de daño, tanques de agua extendidos, salud extra o cualquier ítem que facilite artificialmente el juego.
+- Justificación: El éxito debe depender exclusivamente de las habilidades blandas del equipo (comunicación y cooperación), no de la inversión económica.
 
 ---
 
