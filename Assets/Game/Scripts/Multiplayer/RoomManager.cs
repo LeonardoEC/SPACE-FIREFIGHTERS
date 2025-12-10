@@ -11,6 +11,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public Transform _instantiatePosition;
 
     public bool prueba;
+    public int _numOfIndex;
     [SerializeField] private List<RollDropDown> _rollList;
 
     [SerializeField]
@@ -54,12 +55,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                MakeRollList();
+                //MakeRollList();
                 //pl.GetComponent<PlayerInfo>().rollPlayer = GetRandomEnum<RollDropDown>();
                 
             }
 
-            pl.GetComponent<PlayerInfo>().rollPlayer = _rollList[0];
+            _numOfIndex = pl.GetComponent<PhotonView>().ViewID / 1000;
+
+            pl.GetComponent<PlayerInfo>().rollPlayer = _rollList[_numOfIndex - 1];
             PlayerInstaller.Instance.InstallPlayer(pl.GetComponent<PlayerInfo>());
 
         }
