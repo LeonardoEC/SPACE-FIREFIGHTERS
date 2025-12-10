@@ -78,7 +78,7 @@ Para asegurar el desarrollo continuo del proyecto, utilizaremos:
 - Tienda de Cosméticos: Venta de skins (aspectos visuales) exclusivos para los personajes y sus herramientas. Esto permite a los jugadores personalizar su escuadrón sin afectar el balance.
 - Sistema de DLCs (Expansiones): Ofreceremos contenido descargable post-lanzamiento que incluirá nuevos mapas jugables y desafíos en entornos exóticos.
 
-Política Restrictiva: "NO Pay-to-Win"
+- Política Restrictiva: "NO Pay-to-Win"
 Bajo ninguna circunstancia se venderán ventajas mecánicas.
 - PROHIBIDO VENDER: Mejoras de daño, tanques de agua extendidos, salud extra o cualquier ítem que facilite artificialmente el juego.
 - Justificación: El éxito debe depender exclusivamente de las habilidades blandas del equipo (comunicación y cooperación), no de la inversión económica.
